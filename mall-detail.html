@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>商品详情</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" href="css/reset.css">
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/iscroll.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+		<script src="js/hmt.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script src="js/swiper.min.js" type="text/javascript" ></script>
+		
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/static/jquery.tmpl.js"></script>
+    	<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/Home/default/js/jquery.lazyload.min.js"></script>
+    	
+	
+		<script type="text/javascript" src="js/abot.js"></script>
+ 		<script type="text/javascript" src="http://yanyubao.tseo.cn/api/shopapp.js"></script> 
+ 		
+ 		<script type="text/javascript" src="js/abot.function.js"></script>
+		
+	</head>
+	<body>
+		<header class="hasManyCity hasManyCitytwo" id="header">
+			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<a href="category.html"><div id="locaitonBtn" class="link-url locaitonBtn"></div></a>
+			<div id="" class="searchBox">
+				<a href="#">
+					<i class="icon-search"></i>
+					<span>请输入您想找的内容</span>
+				</a>
+			</div>
+		</header>
+		<div id="container">		
+			<div id="main">		
+				<div class="warp warptwo clearfloat">
+					<div class="detail clearfloat" >
+						<!--banner star-->
+						<section class="banner bannertwo">
+							<div class="swiper-container swiper-container1">
+								<div class="swiper-wrapper bannerwidth">
+									<div class="swiper-slide swiper-slide-duplicate" style="width: 342px;height: 320px;"> 
+										<a href="#" >
+											<img src=" " id="product_picture">
+										</a>
+									</div>
+									<div class="swiper-slide" style="width: 342px;height: 320px;">
+										<a href="#">
+											<img src="img/21.jpg">
+										</a>
+									</div>
+									<div class="swiper-slide swiper-slide-duplicate" style="width: 342px;height: 320px;">
+										<a href="#">
+											<img src="img/21.jpg">
+										</a>
+									</div>
+								<!-- 	<div class="swiper-slide" style="width: 342px;height: 320px;">
+										<a href="#">
+											<img src="img/21.jpg">
+										</a>
+									</div>  -->
+								</div>
+							</div>
+						</section>
+
+						<!--banner end-->
+						
+						<div class="top clearfloat box-s">
+							<div class="shang clearfloat">
+								<div id="product_name" class="zuo clearfloat fl over2 box-s">
+						
+								</div>
+								<div class="you clearfloat fr">
+									<i class="iconfont icon-fenxiang"></i>
+									<p>分享</p>
+								</div>
+							</div>
+							<div class="xia clearfloat">
+								<p class="jifen fl box-s" ><samp id="product_price"></samp>购物币<span class="fr">销量8件</span></p>
+								
+							</div>
+						</div>
+						
+						<div class="middle clearfloat box-s">
+							<a href="#">
+								<span class="fl" >商品详情：</span>
+								<!-- <i class="iconfont icon-jiantou1 fr"></i> -->
+								<span id="product_brief" ></span>
+							</a>
+						</div>
+						<!-- <div class="middle clearfloat box-s">
+							<a href="#">
+								<span class="fl">商品评价</span>
+								<i class="iconfont icon-jiantou1 fr"></i>
+							</a>
+						</div> -->
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<!--footerone star-->
+		<div class="footerone clearfloat">
+			<div class="left clearfloat fl">
+				<ul>
+					<li>
+						<a href="mall.html">
+							<i class="iconfont icon-shangcheng"></i>
+							<p>商城</p>
+						</a>
+					</li>
+					<li>
+						<a href="http://yanyubao.tseo.cn/Home/OnlineChat/chat.html?ensellerid=fyzNUPkaW">
+							<i class="iconfont icon-kefu1"></i>
+							<p>客服</p>
+						</a>
+					</li>				
+				</ul>
+			</div>
+			<div class="right clearfloat fl">
+			
+				<a href="#"><span class="btn fl"  id="btnLogin">加入购物车</span></a>
+				
+				<a href="self-torder.html" class="btn btnone fl">立即购买</a>
+			</div>
+		</div>
+		<!--footerone end-->
+		
+		<!--这里是弹出购物车内容-->
+		<div class="am-share">
+		<div class="am-share-footer">
+			<span class="share_btn">
+				<img src="img/chahao.png"/>
+			</span>
+		</div>
+		  <div class="am-share-sns box-s">
+		     <div class="sdetail clearfloat">
+		     	<div class="top clearfloat">
+		     		<div class="tu clearfloat fl">
+		     			<span></span>
+		     			<img src="img/22.jpg"/>
+		     		</div>
+		     		<div class="you clearfloat fl">
+		     			<p class="tit">小米Max</p>
+		     			<span>2998购物币+700积分</span>
+		     		</div>
+		     	</div>
+		     	<div class="middle clearfloat">
+		     		<p>颜色分类</p>
+		     		<div class="xia clearfloat">
+		     			<ul>
+			     			<li class="ra3 cur">金色</li>
+			     			<li class="ra3">灰色</li>
+			     		</ul>
+		     		</div>		     		
+		     	</div>
+		     	<div class="middle clearfloat">
+		     		<p>机身内存</p>
+		     		<div class="xia clearfloat">
+		     			<ul>
+			     			<li class="ra3 cur">128G</li>
+			     			<li class="ra3">16G</li>
+			     		</ul>
+		     		</div>		     		
+		     	</div>
+		     	<div class="bottom clearfloat">
+		     		<p class="fl">购买数量</p>
+		     		<div class="you clearfloat fr">
+		     			<ul>
+		     				<li><img src="img/jian.jpg"/></li>
+		     				<li>1</li>
+		     				<li><img src="img/jia.jpg"/></li>
+		     			</ul>
+		     		</div>
+		     	</div>
+		     </div>		     
+		  </div>
+		  <a href="shopcar.html" class="shop-btn db">确定</a>
+		</div>
+
+
+
+	</body>
+	
+	
+	<script type="text/javascript">
+
+	function ajax_request_server_callback(res){
+		$('#product_name').html(res.data.name);
+		$('#product_price').html(res.data.price);
+		$('#product_picture').attr('src',res.data.picture);
+		$('#product_brief').html(res.data.brief);
+		
+	};
+	//加入购物车
+	function add_shopcart_callback(res){
+		//提示加入成功，继续购物  或 去购物车结算
+		if(res.code != 1){
+			alert("添加失败");
+			//window.location.href="login.html";
+		}else{
+			var r=confirm("添加成功是否继续购物");
+			if (r==true)
+			  {
+				window.location.href="mall.html";
+			  }
+			else
+			  {
+				window.location.href="shopcar.html";
+			  }
+		}
+			
+		
+	};
+
+	$(function () {
+		var GET = $.urlGet();
+		var productid = GET['productid'];
+	
+		console.log(productid);
+
+		var function_name = "product_detail";
+		var request_data = {'productid':productid};
+	
+		//商品详情
+		ajax_request_server(function_name, request_data,ajax_request_server_callback);
+		
+		
+		//加入购物车
+		$("#btnLogin").click(function (){
+	
+			var user_info = get_login_info();
+			if(!user_info){
+				location.href = 'login.html';
+				return;
+			}
+	
+			var userid = user_info.userid;
+			var checkstr = user_info.checkstr;
+	
+			var function_name = "cart_add";
+			var amount = 1;
+			var request_data = {'sellerid':sellerid, 'productid':productid, 'userid':userid, 'checkstr':checkstr,'amount':amount};
+	
+			ajax_request_server(function_name, request_data, add_shopcart_callback);
+	
+	});
+
+		
+	
+
+	});
+	
+
+		
+	
+
+
+	
+	
+
+
+	
+	</script>
+</html>

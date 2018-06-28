@@ -1,0 +1,148 @@
+!<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>账号密码登录</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/ionic.css">
+		<link rel="stylesheet" href="css/reset.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+
+		
+		<script type="text/javascript" src="js/abot.js"></script>
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/api/shopapp.js"></script>
+		<script type="text/javascript" src="js/abot.function.js"></script>
+		
+	</head>
+	<body>
+		<!--header star-->
+		<header class="hasManyCity hasManyCitytwo" id="header">
+			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<div class="header-tit">
+				登录中心
+			</div>
+			<a href="setup.html" class="fr shoucang sousuo"><i class="iconfont icon-shezhi"></i></a>
+			<a href="#" class="fr shoucang sousuo"><i class="iconfont icon-kefu1"></i></a>			
+		</header>
+	    <!--header end-->
+	
+		<!--main start-->
+			<ion-view  view-title="登录">
+  <ion-nav-buttons side="left">  
+    <li ui-sref="tab.home" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></li>  
+  </ion-nav-buttons> 
+    <ion-content  scroll="false">
+      <div class="logo_input"style="top: 7%;">
+        <div style="margin:0 0 0px 0;" class="text-center login_pic" ng-model="login_logo">
+             <img src="img/thumb_5625b9db0693f.jpg" class="login_logo" style="max-width: 150px;padding-top:20px;" >
+        </div>
+         <div class="login_box">
+         <div class="login_li">
+            <div class="input_account_icon">
+              <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:3px;">&#xe60d;</i>
+            </div>
+            <input type="tel" placeholder="请输入账号或者手机号" class="input_account" required name="mobile" id="mobile" />
+            <div style="clear: both;"></div>
+         </div>
+          <div class="login_li">
+             <div class="input_account_icon">
+             <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:3px;">&#xe687;</i>
+            </div>
+           
+            <input type="text" placeholder="图形验证码" name="verifycode" id="verifycode"  class="input_yzm"/>
+               <div class="input_verify" >
+               <img src="" onClick="this.src='./shopapp_api.php?g=Yanyubao&m=Shang&a=getverifycodeimg&tokenstr=tokenstr?' + new Date().getTime();" class="verify_img" id="refresh2">
+              </div>
+             <div style="clear: both;"></div>
+         </div>
+
+
+          <div class="login_li">
+             <div class="input_account_icon">
+             <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:3px;">&#xe687;</i>
+            </div>
+            <input type="password" placeholder="密码"  class="input_yzm" id="password"/>
+             <div style="clear: both;"></div>
+         </div>
+
+
+        <div style="width: 100%;height:20px;"></div>
+       <!--  <div class="text_box">
+
+              <div class="zhuce" ui-sref="register">注册账户</div> 
+             <div class="wjmm">忘记密码？</div>
+
+           </div>  -->
+
+       </div>
+       <button id="btn_login_by_sms_code" class="button button-energized login_btn" style="background:#06c1ae;margin-left:15px;" >登录</button>
+       
+        <div class="text_box">
+
+              <div class="zhuce" ui-sref="register"><a href="login.html">手机验证码登录</a></div> 
+
+         </div>
+       </div>
+        
+     </ion-content>
+		<!--main end-->
+	</body>
+	
+	
+<script type="text/javascript">
+
+var tokenstr = ''; 	
+
+function login_get_tokenstr_callback(res){
+	if(res.code != 1){
+		alert('连接服务器失败！');
+		return;
+	}
+	tokenstr = res.tokenstr;
+	var url_img = http_server+'?g=Yanyubao&m=Shang&a=getverifycodeimg&tokenstr='+tokenstr;
+	$('#refresh2').attr('src', url_img);
+	
+	
+}
+function login_send_sms_callback(res){
+	if(res.code != 1){
+		alert(res.msg);
+		return;
+	}
+	alert(res.msg);
+}
+function login_by_password_callback(res){
+	
+	console.log(111111111)
+	console.log(res)
+	 /* if(res.code !=1){
+		alert(res.msg);
+		return;
+	}
+	var userid=res.userid;
+	var checkstr=res.checkstr;
+	set_login_info(userid, checkstr);//本地保存用户信息
+	self.location.href = 'center.html';  */
+}
+
+$(function(){
+	login_get_tokenstr(login_get_tokenstr_callback);
+	
+	$("#btn_login_by_sms_code").click(function(){
+		var mobile = $("#mobile").val();//账号
+		var password = $("#password").val();//密码
+		var verifycode=$("#verifycode").val();//图片验证码
+		login_by_password(mobile, password, verifycode, tokenstr, login_by_password_callback)
+		
+	});
+	
+});
+	</script>
+</html>
