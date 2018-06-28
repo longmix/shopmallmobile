@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>分类信息</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" href="css/reset.css">
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/iscroll.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+		<script src="js/hmt.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script src="js/swiper.min.js" type="text/javascript" ></script>
+		
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/static/jquery.tmpl.js"></script>
+    	<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/Home/default/js/jquery.lazyload.min.js"></script>
+    	
+		<script src="js/shopapp.js" type="text/javascript" ></script>
+		
+		<script type="text/javascript" src="js/abot.js"></script>
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/api/shopapp.js"></script>
+		
+		
+	</head>
+	<body>
+		<header class="hasManyCity hasManyCitytwo" id="header">
+			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<div class="header-tit">
+				分类信息
+			</div>
+			<a href="setup.html" class="fr shoucang sousuo"><i class="iconfont icon-shezhi"></i></a>
+								
+		</header>
+		
+		<div id="container">		
+			<div id="main">
+				<div class="category clearfloat">
+					<div class="cbanner clearfloat">
+						<img src="img/55dec2a5c2fa3.png"/>
+					</div>
+					
+					<div class="list clearfloat fl" id="cata_list">
+					<script id="template_cata_list" type="text/javascript">
+						<p class="tit box-s">
+							${name}
+							<a href="#" class="fr">发布信息</a>
+						</p>
+					
+						<div class="bottom clearfloat box-s">
+							<ul >
+								<li><a href="#">${sub_cata[0].name}</a></li>		
+							<!--
+								<li><a href="#">租房</a></li>
+								<li><a href="#">二手房</a></li>
+								<li><a href="#">写字楼</a></li>
+								<li><a href="#">住宅</a></li>
+								<li><a href="#">商铺</a></li>
+								<li><a href="#" class="more">更多</a></li>
+							-->
+							</ul>
+						</div>
+						
+					</script> 
+					</div>
+					
+					
+					
+					<!-- 
+					<div class="list clearfloat fl">
+						<p class="tit box-s">
+							车辆
+							<a href="#" class="fr">发布信息</a>
+						</p>
+						<div class="bottom clearfloat box-s">
+							<ul>
+								<li><a href="#">租车</a></li>
+								<li><a href="#">二手车</a></li>
+								<li><a href="#">汽车美容保养</a></li>
+								<li><a href="#">汽车维修</a></li>
+								<li><a href="#">车辆保险</a></li>
+								<li><a href="#" class="more">更多</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="list clearfloat fl">
+						<p class="tit box-s">
+							跳骚市场
+							<a href="#" class="fr">发布信息</a>
+						</p>
+						<div class="bottom clearfloat box-s">
+							<ul>
+								<li><a href="#">手机</a></li>
+								<li><a href="#">台式电脑</a></li>
+								<li><a href="#">笔记本电脑</a></li>
+								<li><a href="#">家用电器</a></li>
+								<li><a href="#">家具</a></li>
+								<li><a href="#" class="more">更多</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="list clearfloat fl">
+						<p class="tit box-s">
+							家政
+							<a href="#" class="fr">发布信息</a>
+						</p>
+						<div class="bottom clearfloat box-s">
+							<ul>
+								<li><a href="#">搬家</a></li>
+								<li><a href="#">保洁清洁</a></li>
+								<li><a href="#">家政护理</a></li>
+								<li><a href="#">家电维修</a></li>
+								<li><a href="#">管道疏通</a></li>
+								<li><a href="#" class="more">更多</a></li>
+							</ul>
+						</div>
+					</div>
+					-->
+				
+				</div>
+			</div>
+		</div>
+	
+
+	<script type="text/javascript">
+
+
+
+	//商品列表
+	function ajax_request_server_callback(res){
+		
+		//$('#product_name').html(res.data[0].name);
+		
+	//	for(var i=0;i<res.data.lenght;i++){
+	//		get_sub_cata_list(res.data[i].cataid,cata_list_callback);
+	//	}
+		
+		$('#template_cata_list').tmpl(res.data).appendTo('#cata_list');
+	};
+
+	$(function () {
+			
+			
+			var function_name = "product_cata_level2";
+			var request_data = {'sellerid':sellerid};
+			ajax_request_server(function_name, request_data, ajax_request_server_callback);
+		
+	});
+
+	/*
+	//滚动广告
+	function get_ad_list_callback(res){
+		$('#template_ad_list').tmpl(res.data).appendTo('#ad_list');
+	}
+	
+	//滚动广告
+	$(function () {
+		var function_name = "get_flash_ad_list";
+		var request_data = {'page':1};
+		ajax_request_server(function_name, request_data,get_ad_list_callback);
+	});
+	*/
+	</script>
+	
+	</body>
+	
+</html>

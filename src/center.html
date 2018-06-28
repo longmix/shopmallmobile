@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>个人中心</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" href="css/reset.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/iscroll.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+		<script src="js/hmt.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script src="js/swiper.min.js" type="text/javascript" ></script>
+		
+		<script type="text/javascript" src="js/abot.js"></script>
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/api/shopapp.js"></script>
+		<script type="text/javascript" src="js/abot.function.js"></script>
+		
+	</head>
+	<body>
+		<!--header star-->
+		<header class="hasManyCity hasManyCitytwo" id="header">
+			<a href="index.html" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<div class="header-tit">
+				会员中心
+			</div>
+			<a href="setup.html" class="fr shoucang sousuo"><i class="iconfont icon-shezhi"></i></a>
+			<a href="#" class="fr shoucang sousuo"><i class="iconfont icon-kefu1"></i></a>			
+		</header>
+	    <!--header end-->
+	    <div id="container">		
+			<div id="main">
+			    <div class="warp clearfloat">
+			    	<div class="h-top clearfloat box-s">
+			    		<div class="tu clearfloat fl">
+			    			<img src="img/touxiang.png" id="user_img"/>
+			    		</div>
+			    		<div class="content clearfloat fl">
+			    			<p class="hname" id="nickname">未登录</p>
+			    			<p class="htel"><a href="login.html" style="color:white;" id="moudle">前去登录</a></p>
+			    		</div>			    		                
+                </div>
+                <div class="h-bottom clearfloat">
+			    			<samp></samp>
+			    			<ul>
+			    				<li>
+			    					<a href="recharge.html">
+				    					<p id="balance">888</p>
+				    					<span>余额</span>
+			    					</a>
+			    				</li>
+			    				<li>
+			    					<a href="jfguanli.html">
+				    					<p id="balance_jifen">888</p>
+				    					<span>积分</span>
+			    					</a>
+			    				</li>
+			    				<li>
+			    					<a href="#">
+				    					<p id="balance_zengsong">888</p>
+				    					<span>赠款</span>
+			    					</a>
+			    				</li>
+			    			</ul>
+			    		</div>
+			    	</div>
+			    	<div class="cash clearfloat">
+			    		<div class="cash-tit clearfloat box-s">
+			    			<a href="order.html">
+			    						<span>我的订单</span>
+			    					</a>
+			    		</div>
+			    		<div class="shang clearfloat">
+			    			<ul>
+			    				
+			    				<li ui-sref="tab.dingdan({'type':'1'})">
+			    					<a href="wmai-order.html">
+			    						<img src="img/money.png"/>
+			    						<span>待付款</span>
+			    					</a>
+			    				</li>
+			    				<li ui-sref="tab.dingdan({'type':'2'})">
+			    					<a href="sc-order.html">
+			    						<img src="img/shopping.png"/>
+			    						<span>待发货</span>
+			    					</a>
+			    				</li>
+			    				<li ui-sref="tab.dingdan({'type':'4'})">
+			    					<a href="jifen-order.html">
+			    						<img src="img/pingjia.png"/>
+			    						<span>已完成</span>
+			    					</a>
+			    				</li>
+			    			</ul>
+			    		</div>
+			    	</div>
+			    	
+			    	<div class="cash clearfloat">
+			    		<div class="cash-tit clearfloat box-s">
+			    			推广中心
+			    		</div>
+			    		<div class="shang xia clearfloat">
+			    			<ul>
+			    				<li>
+			    					<a href="tuan.html">
+			    						<p><i class="iconfont icon-tuangou"></i></p>
+			    						<span>推广联盟</span>
+			    					</a>
+			    				</li>
+			    				<li>
+			    					<a href="mall.html">
+			    						<p><i class="iconfont icon-baihuo"></i></p>
+			    						<span>推广二维码</span>
+			    					</a>
+			    				</li>
+			    				<li>
+			    					<a href="remen.html">
+			    						<p><i class="iconfont icon-shangjia"></i></p>
+			    						<span>我的现金</span>
+			    					</a>
+			    				</li>
+			    			</ul>
+			    		</div>
+			    	</div>
+			    	
+			    	<div class="cash clearfloat">
+			    		<div class="cash-tit clearfloat box-s">
+			    		<a href="coupon.html">我的优惠券</a>
+			    		</div>
+			    		<div class="shang clearfloat">
+			    			<ul>
+			    				<li>
+			    					<a href="coupon.html">
+			    						<img src="img/sale1.png"/>
+			    						<span>商家优惠券</span>
+			    					</a>
+			    				</li>
+			    				<li>
+			    					<a href="coupon.html">
+			    						<img src="img/sale2.png"/>
+			    						<span>平台优惠券</span>
+			    					</a>
+			    				</li>
+			    				<li>
+			    					<a href="member.html">
+			    						<img src="img/sale3.png"/>
+			    						<span>我的会员</span>
+			    					</a>
+			    				</li>
+			    			</ul>
+			    		</div>
+			    	</div>
+			    	
+			    	<div class="cashlist clearfloat">
+			    		<ul>
+			    			<li class="box-s">
+			    				<a href="jfguanli.html">
+			    					<p class="fl">我的积分</p>
+			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    				</a>
+			    			</li>
+			    			<li class="box-s">
+			    				<a href="#">
+			    					<p class="fl">我的捐赠</p>
+			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    				</a>
+			    			</li>
+			    			<li class="box-s">
+			    				<a href="shopcar.html">
+			    					<p class="fl">我的购物车</p>
+			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    				</a>
+			    			</li>
+			    			<li class="box-s">
+			    				<a href="xiaoxi.html">
+			    					<p class="fl">我的收藏</p>
+			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    				</a>
+			    			</li>
+			    			<li class="box-s">
+			    				<a href="address.html">
+			    					<p class="fl">收货地址</p>
+			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    				</a>
+			    			</li>
+			    			<li class="box-s">
+			    				<a href="huifu.html">
+			    					<p class="fl">支付宝账号</p>
+			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    				</a>
+			    			</li>
+			    			<li class="box-s">
+			    				<a href="#">
+			    					<p class="fl">银行卡账号</p>
+			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    				</a>
+			    			</li>
+			    		</ul>
+			    	</div>			    	
+			    	 <a href="#" class="center-btn db ra3" id="del_login" onclick="del_login_info()">退出登录</a>
+			    </div>
+			</div>
+		</div>
+	   
+	</body>
+	
+	
+<script type="text/javascript">
+function get_user_info_callback(res){
+	if(res.code != 1){
+		alert(res.msg);
+		return;
+	}
+	
+	var nickname =res.data.nickname;//昵称
+	var mobile=res.data.mobile;//手机号、账号
+	var headimgurl=res.data.headimgurl;//头像
+	var balance=res.data.balance;//现金余额
+	var balance_zengsong=res.data.balance_zengsong;//赠送
+	$('#nickname').text(nickname);
+	$('#moudle').text(mobile);
+	$('#user_img').attr('src',headimgurl);
+	$("#balance").text(balance);
+	$("#balance_zengsong").text(balance_zengsong);
+	$("#balance_zengsong").click(function(){
+		console.log(res.data);
+	});
+
+}
+
+$(function(){
+	if(!is_user_login()){
+		$("#del_login").hide();
+		return;
+	}
+	var loginItem = get_login_info();
+	
+	var function_name = "order_list";
+
+	var userid = loginItem.userid;
+	
+	var checkstr = loginItem.checkstr;
+	
+	var request_data = {'userid':userid, 'checkstr':checkstr };
+	
+	 get_user_info(loginItem.userid,loginItem.checkstr,get_user_info_callback);	 
+});
+
+
+</script>
+
+
+</html>
