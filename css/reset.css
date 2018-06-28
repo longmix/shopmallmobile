@@ -1,0 +1,452 @@
+@charset "utf-8";
+
+/* BAOCMS WAP */
+
+html {
+	height: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	font-size: 6.25em;
+}
+
+body {
+	font-size: 0.12rem;
+	line-height:1;
+	background: #fafafa;
+	margin: 0;
+	padding: 0;
+}
+a {
+	color: #06c1ae;
+	text-decoration: none;
+	outline: 0
+}
+
+a:focus {
+	outline: thin dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px
+}
+
+a.react,
+label.react {
+	display: block;
+	color: inherit;
+	height: 100%;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+a.react:active,
+a.react.react-active,
+label.react:active {
+	background: rgba(0, 0, 0, 0);
+}
+
+#scroll {
+	padding-bottom: 0.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+form {
+	margin: 0;
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img {
+	border: 0;
+	vertical-align: middle;
+	-ms-interpolation-mode: bicubic;
+}
+
+a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-size: 0.14rem;
+}
+
+a:focus {
+	outline: none;
+	-moz-outline: none;
+}
+
+a:visited {
+	outline: none;
+	-moz-outline: none;
+}
+a.shop-btn{
+	color: #fff;
+}
+ul,
+li,
+ol {
+	margin: 0;
+	padding: 0;
+	list-style: none outside none;
+}
+
+ol li {
+	list-style: none;
+}
+
+em {
+	font-style: normal;
+}
+
+ul.inline-style li {
+	float: left;
+	display: inline;
+}
+
+button,
+input,
+select,
+textarea {
+	font-size: 1.1em;
+	margin: 0;
+	outline: 0 none;
+	vertical-align: baseline;
+	*vertical-align: middle;
+	font-family: "MICROSOFT YAHEI";
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+textarea {
+	overflow: auto;
+	vertical-align: top;
+	resize: none;
+}
+
+button,
+input {
+	line-height: normal;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+	*overflow: visible;
+}
+
+button[disabled],
+input[disabled],
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+	*height: 0.13rem;
+	*width: 0.13rem;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+	display: block;
+}
+
+audio,
+canvas,
+video {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+input[type="search"] {
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	box-sizing: border-box;
+}
+
+:-moz-placeholder {
+	color: #999;
+}
+
+::-webkit-input-placeholder {
+	color: #999;
+}
+
+
+/*验证手机弹出框样式*/
+
+p.form {
+	line-height: 0.25rem;
+	padding: 0.2rem;
+	font-size: 0.14rem;
+	overflow-y: hidden;
+}
+
+.layui-layer-content {
+	overflow-y: hidden;
+	height: auto;
+}
+
+.layui-layer-page .layui-layer-content {
+	overflow-y: hidden;
+}
+
+.hui {
+	color: #999999 !important;
+}
+
+.rem24 {
+	font-size: 0.24rem !important;
+}
+
+.rem22 {
+	font-size: 0.22rem !important;
+}
+
+.rem20 {
+	font-size: 0.20rem !important;
+}
+
+.rem18 {
+	font-size: 0.18rem !important;
+}
+
+.rem16 {
+	font-size: 0.16rem !important;
+}
+
+.rem14 {
+	font-size: 0.14rem !important;
+}
+
+.rem12 {
+	font-size: 0.12rem !important;
+}
+
+
+/*边距*/
+
+.mt10 {
+	margin-top: 0.1rem;
+}
+
+.mb10 {
+	margin-bottom: 0.1rem;
+}
+
+.ml10 {
+	margin-left: 0.1rem;
+}
+
+.mr10 {
+	margin-right: 0.1rem;
+}
+
+.mar10 {
+	margin: 0.1rem;
+}
+
+.pad_t10 {
+	padding-top: 0.1rem;
+}
+
+.pad_b10 {
+	padding-bottom: 0.1rem;
+}
+
+.pad_l10 {
+	padding-left: 0.1rem;
+}
+
+.pad_r10 {
+	padding-right: 0.1rem;
+}
+
+.pad10 {
+	padding: 0.1rem;
+}
+
+.mt15 {
+	margin-top: 15px !important;
+}
+
+.mb15 {
+	margin-bottom: 15px !important;
+}
+
+.pb50 {
+	padding-bottom: 0.5rem;
+}
+
+.mr20 {
+	margin-right: 0.20rem !important;
+}
+
+.mr25 {
+	margin-right: 10px !important;
+}
+
+.ml25 {
+	margin-left: 10px !important;
+}
+
+
+/*字体颜色*/
+
+.maincl {
+	color: #2fbdaa;
+}
+
+.fontcl1 {
+	color: #f53c42;
+}
+
+
+/*红色*/
+
+.fontcl2 {
+	color: #ff3c00;
+}
+
+
+/*橘色*/
+
+.black9 {
+	color: #999999 !important;
+}
+
+.black6 {
+	color: #666666 !important;
+}
+
+.black3 {
+	color: #333333 !important;
+}
+
+.black {
+	color: #000000 !important;
+}
+
+
+/*字体大小*/
+
+.font_size14 {
+	font-size: 0.14rem;
+}
+
+
+/*字体行高*/
+
+.font_line24 {
+	line-height: 0.24rem;
+}
+
+
+/*溢出隐藏*/
+
+.overflow_clear {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+/*css溢出省略*/
+
+.line2 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+/*浮动*/
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.clear {
+	clear: both;
+	font-size: 0;
+	height: 10px;
+	line-height: 0;
+}
+
+@font-face {font-family: "iconfont";
+  src: url('../iconfont/iconfont.eot?t=1469687487'); /* IE9*/
+  src: url('../iconfont/iconfont.eot?t=1469687487#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../iconfont/iconfont.woff?t=1469687487') format('woff'), /* chrome, firefox */
+  url('../iconfont/iconfont.ttf?t=1469687487') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../iconfont/iconfont.svg?t=1469687487#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:35px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-shangcheng:before { content: "\e619"; }
+.icon-kefu1:before { content: "\e613"; }
+.icon-jiantou1:before { content: "\e635"; }
+.icon-lajixiang:before { content: "\e632"; }
+.icon-xiala:before { content: "\e630"; }
+.icon-jiahao1:before { content: "\e636"; }
+.icon-fanhui:before { content: "\e631"; }
+.icon-sousuo:before { content: "\e623"; }
+.icon-dizhi1:before { content: "\e618"; }
+.icon-kefu1:before { content: "\e613"; }
+.icon-shezhi:before { content: "\343c"; }
+.icon-fenxiang:before { content: "\e62a"; }
+.icon-xihuan1:before { content: "\e61a"; }
+.icon-bianji:before { content: "\e637"; }
+.icon-tuangou:before { content: "\e658"; color: #00CC7D; }
+.icon-baihuo:before { content: "\e6a7"; color: #58A5F8; }
+.icon-shangjia:before { content: "\e685"; color: #F19149;}
+.box-s{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.over{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+	white-space: nowrap;
+}
