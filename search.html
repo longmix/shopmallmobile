@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>搜索</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" href="css/reset.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/iscroll.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+		<script src="js/hmt.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script src="js/swiper.min.js" type="text/javascript" ></script>
+		
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/static/jquery.tmpl.js"></script>
+    	<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/Home/default/js/jquery.lazyload.min.js"></script>
+
+		<script type="text/javascript" src="js/abot.js"></script>
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/api/shopapp.js"></script> 
+		
+		
+	</head>
+
+	<body>
+		<div id="container">
+			<section class="searchBar wap">
+			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			
+				<div class="searchBox" >
+					<form>
+						<input type="search" id="sec" name="w" placeholder="" autocomplete="off" style="width: 75%;">
+						<button id="search">搜索</button> 
+					</form>
+						
+				</div>
+				<div class="voiceBtn"></div>
+			</section>
+			<section class="hotBox">
+				<div class="title">热门搜索</div>
+				<ul class="hotKeyUl" id="resou">
+				
+				 <script id="template_resou" type="text/x-jquery-tmpl">
+					<li>
+						<a href="#">${}</a>
+					</li>
+				</script>
+				
+				<!-- 
+					<li>
+						<a href="#">酒店</a>
+					</li>
+					<li>
+						<a href="#">火锅</a>
+					</li>
+					<li>
+						<a href="#">料理</a>
+					</li>
+					<li>
+						<a href="#">酒店</a>
+					</li>
+					<li>
+						<a href="#">电影</a>
+					</li>
+					<li>
+						<a href="#">家政</a>
+					</li>
+					<li>
+						<a href="#">洗车</a>
+					</li>
+					<li>
+						<a href="#">美妆</a>
+					</li>
+				-->
+				</ul>
+			</section>
+	<section class="hotBox">
+	<!-- 
+	<div class="current">最近搜索</div>
+  	<div class="delete history" style="width: 100%;float: left"></div>
+  	
+  	<div class="history" id="his-dele">X</div>
+  	
+  	<div class="Storage" style="width: 100px;height: 100px;margin: 0 auto;">无存储记录</div>
+  	 -->
+	
+				<div class="title">搜索历史</div> 
+				<div class="clear"" style="text-align:right">
+                        <a href="javascript:void" id="his-dele"><i class="clear"></i>清除搜索历史</a>
+                </div>
+                
+				<ul class="hotKeyUl" id="history_ss">
+					<li>
+						<a href="#" class="delete history" style="width: 300%;"></a>
+					</li>
+				</ul>
+				<!-- 
+				<ul class="hotKeyUl" id="history_ss">
+					<li>
+						<a href="#">食品</a>
+					</li>
+					<li>
+						<a href="#">毒品</a>
+					</li>
+					<li>
+						<a href="#">牛奶</a>
+					</li>
+					<li>
+						<a href="#">酒店</a>
+					</li>
+					<li>
+						<a href="#">电影</a>
+					</li>
+					<li>
+						<a href="#">家政</a>
+					</li>
+					<li>
+						<a href="#">洗车</a>
+					</li>
+					<li>
+						<a href="#">美妆</a>
+					</li>
+					</ul>
+				 -->
+				
+
+		</section>
+		</div>
+		
+		
+
+	<script type="text/javascript">
+	
+
+	/*搜索保存至本地Localstorage*/
+//	$(document).ready(function(){
+	
+//	  $("#search").click(function(){
+	
+	    /*得到本地的Localstorage*/
+	
+/*	
+	 var word = [];
+	  word = $('#search_value').val();
+	if(!word){
+	    return;
+	}else{
+	    for(i=0;i<99;i++){
+	        arr_word = [i,word];
+	
+	    }
+	    var json_arr_word = JSON.stringify(arr_word);
+	    var storage=window.localStorage;
+	
+	    storage.setItem(i,json_arr_word);
+	} 
+	  });
+	});
+*/	
+	
+	/*清空本地Localstorage*/
+/*	$(document).ready(function(){
+	  $("#clear_search").click(function(){
+	
+	 var storage=window.localStorage;
+	 storage.clear();
+	 $('#history_ss').html('');
+	  });
+	});
+*/
+	
+	/*获取店铺热搜词*/
+	function get_resou_word_callback(data){
+	
+		console.log('922222222222222222895');
+		
+		$('#template_resou').tmpl(data.hot_keywords).appendTo('#resou');
+	};
+	
+	$(function () {
+		
+		console.log('aaaaaaaaa');
+		var data = {'sellerid':sellerid}
+		get_shop_option(data,get_resou_word_callback);
+	});
+
+	/*获取爆款推荐*/
+	function get_baokuan_tuijian(code, counter, product_list){
+	 
+		console.log('999999999999999989444');
+		
+	    console.log(product_list);
+	    if (counter < 3) {
+	        return;
+	    }
+	
+	    console.log(product_list[0]);
+	    console.log(product_list[1]);
+	    console.log(product_list[2]);
+	
+	    $('#index_baokuan_01').attr('href', product_list[0]['url']);
+	    $('#index_baokuan_02').attr('href', product_list[1]['url']);
+	    $('#index_baokuan_03').attr('href', product_list[2]['url']);
+	
+	    $('#index_baokuan_01_img').attr('src', product_list[0]['index_baokuan_picture']);
+	    $('#index_baokuan_02_img').attr('src', product_list[1]['index_baokuan_picture']);
+	    $('#index_baokuan_03_img').attr('src', product_list[2]['index_baokuan_picture']);
+	    $('#index_baokuan_01_name').html(product_list[0]['name']);
+	    $('#index_baokuan_02_name').html(product_list[1]['name']);
+	    $('#index_baokuan_03_name').html(product_list[2]['name']);
+	};
+	$(function(){
+	    get_product_baokuan_list(get_baokuan_tuijian);
+	});
+	
+	
+	
+
+  	/*搜索记录相关*/
+  	 
+  	var hisTime;//获取搜索时间数组
+  	var hisItem;//获取搜索内容数组
+  	var firstKey;//获取最早的1个搜索时间
+  	 
+  	function init (){
+  	 
+  	hisTime = [];//时间数组置空
+  	hisItem = [];//内容数组置空
+  	 
+  	for(var i = 0; i < localStorage.length; i++){//数据去重
+  	if(!isNaN(localStorage.key(i))){//判断数据是否合法
+  	hisTime.push(localStorage.key(i));
+  	}
+  	}
+  	 
+  	if(hisTime.length > 0) {
+  	hisTime.sort();//排序
+  	for (var y = 0; y < hisTime.length; y++) {
+  	localStorage.getItem(hisTime[y]).trim() && hisItem.push(localStorage.getItem(hisTime[y]));
+  	}
+  	}
+  	 
+  	$(".delete").html("");//执行init(),每次清空之前添加的节点
+  	$(".Storage").show();
+  	for(var i = 0; i < hisItem.length; i++){
+  	 
+  	$(".delete").prepend('<li><a href="#">'+hisItem[i]+'</a></li>');
+  	if(hisItem[i] != ''){
+  	$(".Storage").hide();
+  	}
+  	}
+  	 
+  	}
+  	 
+  	init();//调用
+  	 
+  	$("#search").click(function(){
+  	var value = $("#sec").val();
+  	var time = (new Date()).getTime();
+  	 
+  	if(!value){
+  	alert("你未输入搜索内容");
+  	return false;
+  	}
+  	//输入的内容localStorage有记录
+  	 
+  	if($.inArray(value,hisItem) >= 0){
+  	 
+  	for(var j = 0; j < localStorage.length; j++){
+  	if(value == localStorage.getItem(localStorage.key(j))){
+  	localStorage.removeItem(localStorage.key(j));
+  	}
+  	}
+  	localStorage.setItem(time,value);
+  	 
+  	}else{
+  	localStorage.setItem(time,value);
+  	}
+  	init();
+  	 
+  	});
+  	 
+  	//清除记录功能
+  	$("#his-dele").click(function(){
+  	var f = 0;
+  	for(;f<hisTime.length;f++){
+  	localStorage.removeItem(hisTime[f]);
+  	}
+  	init();
+  	});
+ 
+	
+	
+	</script>
+
+	</body>
+
+
+</html>
