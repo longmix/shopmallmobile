@@ -37,6 +37,8 @@ var sellerid = 'pQNNmSkaq';
 
 ## 二次开发帮助文档
 
+[http://www.abot.cn/yanyubao-api-shop](http://www.abot.cn/yanyubao-api-shop)
+
 ## 商城系统预览图
 
 
