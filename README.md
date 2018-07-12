@@ -16,7 +16,9 @@ PHP + Apache， PHP版本 >= 5.1
 
 ### 查看在线演示：
 
-[http://yanyubao.tseo.cn/shopmobiledemo/](http://yanyubao.tseo.cn/shopmobiledemo/)
+![image](https://raw.githubusercontent.com/longmix/shopmallmobile/master/doc/qrcode_shopmobiledemo.png)
+
+http://yanyubao.tseo.cn/shopmobiledemo/
 
 ### 如何安装商城系统？
 
@@ -51,6 +53,8 @@ var sellerid = 'pQNNmSkaq';
 
 ## 商城系统预览图
 
+![image](https://raw.githubusercontent.com/longmix/shopmallmobile/master/doc/screenshop01.jpg)
+![image](https://raw.githubusercontent.com/longmix/shopmallmobile/master/doc/screenshop02.jpg)
 
 
 
