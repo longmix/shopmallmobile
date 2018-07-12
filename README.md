@@ -14,6 +14,10 @@
 
 PHP + Apache， PHP版本 >= 5.1
 
+### 查看在线演示：
+
+[http://yanyubao.tseo.cn/shopmobiledemo/](http://yanyubao.tseo.cn/shopmobiledemo/)
+
 ### 如何安装商城系统？
 
 将src目录下的内容放到项目的根目录下即可。
@@ -38,6 +42,12 @@ var sellerid = 'pQNNmSkaq';
 ## 二次开发帮助文档
 
 [http://www.abot.cn/yanyubao-api-shop](http://www.abot.cn/yanyubao-api-shop)
+
+
+## 小程序商城
+
+小程序商城预计八月份发布，详情关注[http://www.abot.cn/source-code](http://www.abot.cn/source-code)
+
 
 ## 商城系统预览图
 
