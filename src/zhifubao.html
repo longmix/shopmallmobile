@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>支付宝提现账号</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+		
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	    <script type="text/javascript" src="js/iscroll.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+		<script src="js/hmt.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script src="js/swiper.min.js" type="text/javascript" ></script>
+		
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/static/jquery.tmpl.js"></script>
+		<script type="text/javascript" src="js/abot.js"></script>
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/api/shopapp.js"></script>
+		<script type="text/javascript" src="js/abot.function.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		
+	</head>
+	<body>
+	<!--header star-->
+		<header class="hasManyCity hasManyCitytwo" id="header">
+			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<div class="header-tit">
+				支付宝提现账号
+			</div>
+			<a href="setup.html" class="fr shoucang sousuo"><i class="iconfont icon-shezhi"></i></a>
+			<a href="#" class="fr shoucang sousuo"><i class="iconfont icon-kefu1"></i></a>			
+		</header>
+	    <!--header end-->
+	
+		<!--main start-->
+			<ion-view  view-title="登录">
+  <ion-nav-buttons side="left">  
+    <li ui-sref="tab.home" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></li>  
+  </ion-nav-buttons> 
+    <ion-content  scroll="false">
+      <div class="logo_input"style="top: 7%;">
+        <div style="margin:0 0 0px 0;" class="text-center login_pic" ng-model="login_logo">
+<!--  		<img src="img/thumb_5625b9db0693f.jpg" class="login_logo" style="max-width: 150px;padding-top:20px;" >
+ -->        </div>
+         <div class="login_box">
+         
+         <div class="login_li">
+           
+           
+              <span class="glyphicon glyphicon-user" style="font-size:20px;color: #999;position: relative;top:41px;">账号</span>
+          
+            <input type="tel" placeholder="请输入支付宝账号" class="input_account" required name="mobile" id="mobile" style="font-size:15px;color: #999;" />
+            
+         </div>
+         <div style="clear: both;"></div>
+         <div class="zhifubao_li">
+  
+             <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:41px;">昵称</i>
+            <input type="text" placeholder="支付宝昵称"  class="input_zfb" id="nickname" style="font-size:15px;color: #999;"/>
+             
+         </div>
+        <div class="text_box">
+
+              <div class="zhuce" ui-sref="register">请在上方设置支付宝转账提现账号，请仔细核对您的账户后填写，一旦提交后不可更改!</div> 
+            <!--  <div class="wjmm">忘记密码？</div> -->
+
+           </div> 
+
+       </div>
+       <button id="asdf" class="button button-energized login_btn" style="background:#06c1ae;margin-left:15px;" onclick="tijiao()" >提交</button>
+       
+       </div>
+        
+     </ion-content>
+		<!--main end-->
+	
+	</body>
+	
+	<script>
+	
+	function zhifubao_list_callback(res){
+		if(res.code ==1){
+			alert(res.msg)
+		}else{
+			alert(res.msg)
+		}
+		
+	}
+		
+		
+
+	function tijiao(){
+		
+		var mobile = $("#mobile").val();
+
+		var nickname = $("#nickname").val();
+		
+		
+		var loginItem = get_login_info();//获取登录信息 
+
+		var userid = loginItem.userid;
+		
+		var checkstr = loginItem.checkstr;
+		
+		var function_name = "wanshan_bankinfo";
+		
+		var request_data = {'userid':userid,'checkstr':checkstr,'mobile':mobile,'nickname':nickname,'action':'ajax'};
+		
+			ajax_request_server(function_name,request_data, zhifubao_list_callback);
+			
+		};
+		 
+		
+		
+
+	
+	</script>
+	</html>

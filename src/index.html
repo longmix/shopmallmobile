@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>首页</title>
+		<title id="title">首页</title>
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-touch-fullscreen" content="yes">
@@ -50,14 +50,14 @@
 		<div id="container">		
 			<div id="main">
 				<div id="scroller">
-					<section class="banner">
+					<section class="banner" style="height: auto;">
 						<div class="swiper-container swiper-container1">
 							<div class="swiper-wrapper bannerwidth" id="ad_list">
 						
 							 <script id="template_ad_list" type="text/x-jquery-tmpl">
 								<div class="swiper-slide">
 									<a href="#">
-										<img src="${image}">
+										<img src="${image}"> 
 									</a>
 								</div>
 							</script>
@@ -93,11 +93,11 @@
 					
 					<section class="slider">
 						<div class="swiper-container swiper-container2">
-							<div class="swiper-wrapper tuangouwidth">
-								<div class="swiper-slide swiper-slide-duplicate">
+							<div class="swiper-wrapper tuangouwidth"  style="height: auto;">
+								<div class="swiper-slide swiper-slide-duplicate" style="padding-bottom: 10px;"">
 									<ul class="icon-list" id="icon_index">
 									<script id="template_icon_index" type="text/x-jquery-tmpl">
-										<li class="icon">
+										<li class="icon" style="width: 20%;">
 											<a href="${url}">
 												<span class="icon-circle">
 													<img src="${src}">
@@ -245,8 +245,7 @@
 								</div>
 								 -->
 							</div>
-							<div class="swiper-pagination swiper-pagination2">
-							</div>
+						
 						</div>
 					</section>
 				</div>
@@ -288,62 +287,6 @@
 											<p class="txt_center fontcl1">¥50<small class="ml10"><del class="black9">￥60</del></small></p>
 										</a>
 									</div>
-									<div class="box swiper-slide">
-										<a href="#">
-											<img src="img/thumb_566813906046a.jpg" width="" height="">
-											<p class="txt_center overflow_clear">测试</p>
-											<p class="txt_center fontcl1">¥50<small class="ml10"><del class="black9">￥60</del></small></p>
-										</a>
-									</div>
-									<div class="box swiper-slide">
-										<a href="#">
-											<img src="img/thumb_566813906046a.jpg" width="" height="">
-											<p class="txt_center overflow_clear">测试</p>
-											<p class="txt_center fontcl1">¥50<small class="ml10"><del class="black9">￥60</del></small></p>
-										</a>
-									</div>
-									<div class="box swiper-slide">
-										<a href="#">
-											<img src="img/thumb_566813906046a.jpg" width="" height="">
-											<p class="txt_center overflow_clear">测试</p>
-											<p class="txt_center fontcl1">¥50<small class="ml10"><del class="black9">￥60</del></small></p>
-										</a>
-									</div>
-									<div class="box swiper-slide">
-										<a href="#">
-											<img src="img/thumb_566813906046a.jpg" width="" height="">
-											<p class="txt_center overflow_clear">测试</p>
-											<p class="txt_center fontcl1">¥50<small class="ml10"><del class="black9">￥60</del></small></p>
-										</a>
-									</div>
-									<div class="box swiper-slide">
-										<a href="#">
-											<img src="img/thumb_566813906046a.jpg" width="" height="">
-											<p class="txt_center overflow_clear">测试</p>
-											<p class="txt_center fontcl1">¥50<small class="ml10"><del class="black9">￥60</del></small></p>
-										</a>
-									</div>
-									<div class="box swiper-slide">
-										<a href="#">
-											<img src="img/thumb_566813906046a.jpg" width="" height="">
-											<p class="txt_center overflow_clear">测试</p>
-											<p class="txt_center fontcl1">¥50<small class="ml10"><del class="black9">￥60</del></small></p>
-										</a>
-									</div>
-									<div class="box swiper-slide">
-										<a href="#">
-											<img src="img/thumb_566813906046a.jpg" width="" height="">
-											<p class="txt_center overflow_clear">测试</p>
-											<p class="txt_center fontcl1">¥50<small class="ml10"><del class="black9">￥60</del></small></p>
-										</a>
-									</div>
-									<div class="box swiper-slide">
-										<a href="#">
-											<img src="img/thumb_566813906046a.jpg" width="" height="">
-											<p class="txt_center overflow_clear">测试</p>
-											<p class="txt_center fontcl1">¥50<small class="ml10"><del class="black9">￥60</del></small></p>
-										</a>
-									</div>
 									-->
 									
 								</div>
@@ -366,69 +309,13 @@
 										<div class="box swiper-slide">
 											<a href="mall-detail.html?productid=${productid}">
 												<img src="${picture}" style="height: 100%;width: 100%;">
-												<p class="txt_center overflow_clear">${name}小铺</p>
-												<p class="fontcl2">2人关注<small class="ml10 fr black9">已售0</small></p>
+												<p class="txt_center overflow_clear">${name}</p>
+												<p class="fontcl2">2人关注<small class="ml10 fr black9">已售${sale_volume}</small></p>
 											</a>
 										</div>
 									</script>
 									
 										<!-- 
-										<div class="box swiper-slide">
-											<a href="#">
-												<img src="img/thumb_5745110bbc27c.jpg" width="114" height="114">
-												<p class="txt_center overflow_clear">菲诗小铺</p>
-												<p class="fontcl2">2人关注<small class="ml10 fr black9">已售0</small></p>
-											</a>
-										</div>
-										<div class="box swiper-slide">
-											<a href="#">
-												<img src="img/thumb_5745110bbc27c.jpg" width="114" height="114">
-												<p class="txt_center overflow_clear">菲诗小铺</p>
-												<p class="fontcl2">2人关注<small class="ml10 fr black9">已售0</small></p>
-											</a>
-										</div>
-										<div class="box swiper-slide">
-											<a href="#">
-												<img src="img/thumb_5745110bbc27c.jpg" width="114" height="114">
-												<p class="txt_center overflow_clear">菲诗小铺</p>
-												<p class="fontcl2">2人关注<small class="ml10 fr black9">已售0</small></p>
-											</a>
-										</div>
-										<div class="box swiper-slide">
-											<a href="#">
-												<img src="img/thumb_5745110bbc27c.jpg" width="114" height="114">
-												<p class="txt_center overflow_clear">菲诗小铺</p>
-												<p class="fontcl2">2人关注<small class="ml10 fr black9">已售0</small></p>
-											</a>
-										</div>
-										<div class="box swiper-slide">
-											<a href="#">
-												<img src="img/thumb_5745110bbc27c.jpg" width="114" height="114">
-												<p class="txt_center overflow_clear">菲诗小铺</p>
-												<p class="fontcl2">2人关注<small class="ml10 fr black9">已售0</small></p>
-											</a>
-										</div>
-										<div class="box swiper-slide">
-											<a href="#">
-												<img src="img/thumb_5745110bbc27c.jpg" width="114" height="114">
-												<p class="txt_center overflow_clear">菲诗小铺</p>
-												<p class="fontcl2">2人关注<small class="ml10 fr black9">已售0</small></p>
-											</a>
-										</div>
-										<div class="box swiper-slide">
-											<a href="#">
-												<img src="img/thumb_5745110bbc27c.jpg" width="114" height="114">
-												<p class="txt_center overflow_clear">菲诗小铺</p>
-												<p class="fontcl2">2人关注<small class="ml10 fr black9">已售0</small></p>
-											</a>
-										</div>
-										<div class="box swiper-slide">
-											<a href="#">
-												<img src="img/thumb_5745110bbc27c.jpg" width="114" height="114">
-												<p class="txt_center overflow_clear">菲诗小铺</p>
-												<p class="fontcl2">2人关注<small class="ml10 fr black9">已售0</small></p>
-											</a>
-										</div>
 										<div class="box swiper-slide">
 											<a href="#">
 												<img src="img/thumb_5745110bbc27c.jpg" width="114" height="114">
@@ -463,18 +350,19 @@
 						</div> -->
 						
 						
-							<div style="height: 120px;">
-								
-									<div style="width: 50%;  float: left;"> 
+							<div style="height: 120px;" id="img_list">
+								<script id="template_img_list" type="text/x-jquery-tmpl">
+									<div style="width: 100%;  float: left;"> 
 										<a href="#" title="家居广告1">
-											<img src="img/553b0e58b6c52.jpg" alt="家居广告1" style="width: 100%; height: 100%">
+											<img src="${image}" alt="家居广告1" style="width: 100%;">
 										</a>
 									</div>
-									<div style="width: 50%;  float: left;"> 
+								</script>
+									<!-- <div style="width: 50%;  float: left;"> 
 										<a href="#" title="家居广告2">
 											<img src="img/553b0e254774b.jpg" alt="家居广告2" style="width: 100%; height: 100%">
 										</a>
-									</div>
+									</div> -->
 								
 							</div>
 						
@@ -493,14 +381,14 @@
 								<li class="sy_recmd_list">
 										<div class="box">
 											<div class="pub_img">
-												<a href="mall-detail.html?productid=${productid}"><img src="${picture}" width="145" height="145"></a>
+												<a href="mall-detail.html?productid=${productid}"><img src="${picture}"></a>
 											</div>
 											<div class="pub_wz">
 												<h3 class="overflow_clear"><a href="#">${name}</a></h3>
 												<div class="nr_box">
 													<p class="fl fontcl2">¥${price}</p>
-													<span class="fl black9">[优惠活动]</span>
-													<p class="fr price fontcl2"><span class="black9">已售50</span></p>
+													<span class="fl black9">${cataname}</span>
+													<p class="fr price fontcl2"><span class="black9">已售${sale_volume}</span></p>
 												</div>
 											</div>
 										</div>
@@ -508,36 +396,6 @@
 								</script>
 
 									<!--  
-									<li class="sy_recmd_list">
-										<div class="box">
-											<div class="pub_img">
-												<a href="mall-detail.html"><img src="img/thumb_543ba5688cb7b.jpg" width="145" height="145"></a>
-											</div>
-											<div class="pub_wz">
-												<h3 class="overflow_clear"><a href="#">喜来登酒店</a></h3>
-												<div class="nr_box">
-													<p class="fl fontcl2">¥25</p>
-													<span class="fl black9">[优惠活动]</span>
-													<p class="fr price fontcl2"><span class="black9">已售50</span></p>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="sy_recmd_list">
-										<div class="box">
-											<div class="pub_img">
-												<a href="mall-detail.html"><img src="img/thumb_543ba5688cb7b.jpg" width="145" height="145"></a>
-											</div>
-											<div class="pub_wz">
-												<h3 class="overflow_clear"><a href="#">喜来登酒店</a></h3>
-												<div class="nr_box">
-													<p class="fl fontcl2">¥25</p>
-													<span class="fl black9">[优惠活动]</span>
-													<p class="fr price fontcl2"><span class="black9">已售50</span></p>
-												</div>
-											</div>
-										</div>
-									</li>
 									<li class="sy_recmd_list">
 										<div class="box">
 											<div class="pub_img">
@@ -653,6 +511,10 @@
 	//滚动广告
 	function ajax_request_server_callback(res){
 		$('#template_ad_list').tmpl(res.data).appendTo('#ad_list');
+
+		console.log(1231213);
+		console.log(res);
+		console.log(1231213);
 		
 		//初始化Swiper
 		var mySwiper = new Swiper('.swiper-container', {
@@ -665,13 +527,24 @@
 	
 	
 	//平铺广告
-	function get_flash_img_list_callback(img_list){
+/* 	function get_flash_img_list_callback(img_list){
 		$('#template_img_list').tmpl(img_list).appendTo('#img_list');
+	} */
+	
+	function get_flash_img_list_callback(res){
+		$('#template_img_list').tmpl(res.data).appendTo('#img_list');
+	}
+	
+	//商城信息 标题
+	function get_shop_info_callback(res){
+		$('#title').html(res.data.name); 
 	}
 	
 	$(function () {
-		console.log('1111111111111111111');
-    	console.log(http_server);
+		//商城信息
+		var function_name = "get_shop_info";
+		ajax_request_server(function_name, request_data,get_shop_info_callback);
+		
     	
     	var data = {'page':next_page ++, };
     	//var data = {'p':1};
@@ -695,7 +568,10 @@
 		ajax_request_server(function_name, request_data,ajax_request_server_callback);
 		
 		//平铺广告
-		get_flash_img_list(get_flash_img_list_callback)
+		/* get_flash_img_list(get_flash_img_list_callback) */
+		var function_name = "get_flash_img_list";
+		var request_data = {'page':1};
+		ajax_request_server(function_name, request_data,get_flash_img_list_callback);
 		
 		
 		
@@ -743,6 +619,7 @@
 	    }); 
 	
 	});
+
 	
 
 	</script>

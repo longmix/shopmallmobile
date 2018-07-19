@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>百货商城</title>
+		<title>全部商品</title>
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-touch-fullscreen" content="yes">
@@ -21,6 +21,8 @@
 		<script type="text/javascript" src="js/index.js"></script>
 		<script src="js/swiper.min.js" type="text/javascript" ></script>
 		
+		<script src="js/other.js" type="text/javascript"></script>
+		
 		<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/static/jquery.tmpl.js"></script>
     	<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/Home/default/js/jquery.lazyload.min.js"></script>
     	
@@ -32,7 +34,7 @@
 	</head>
 	<body>
 		<header class="hasManyCity hasManyCitytwo" id="header">
-			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<a href="index.html" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
 			<a href="category.html"><div id="locaitonBtn" class="link-url locaitonBtn"></div></a>
 			<div id="" class="searchBox">
 				<a href="search.html">
@@ -41,16 +43,34 @@
 				</a>
 			</div>
 		</header>
+		
+		
 		<!-- screening -->
 		<div class="screening">
 		    <ul>
-		        <li class="Brand">全部分类</li>
-		        <li class="Regional">全城</li>
-		        <li class="Sort">智能排序</li>
+		        <li class="Brand" style="width: 50%;">全部分类</li>
+		        <li class="Sort" style="width: 50%;">智能排序</li>
 		    </ul>
 		</div>
 		<!-- End screening -->		
 		<!-- Category -->
+		<div class="Category-eject">
+		    <ul class="Category-w" id="cata_list">
+		    	<script id="template_cata_list" type="text/x-jquery-tmpl">
+
+				<li><a href="mall.html?cataid=${cataid}">${name}</a></li>	
+		        </script>
+		    </ul>
+		</div>
+
+		<div class="Sort-eject Sort-height">
+		    <ul class="Sort-Sort" id="Sort-Sort">
+		        <li onclick="Sorts(this)">智能排序</li>
+		        <li onclick="Sorts(this)">离我最近</li>
+
+		    </ul>
+		</div>
+<!-- 		
 		<div class="Category-eject">
 		    <ul class="Category-w" id="Categorytw">
 		        <li onclick="Categorytw(this)">全部品牌</li>
@@ -102,8 +122,8 @@
 		        <li onclick="Categorys(this)">其他</li>
 		    </ul>
 		</div>
-		<!-- End Category -->
-		<!-- grade -->
+		End Category
+		grade
 		<div class="grade-eject">
 		    <ul class="grade-w" id="gradew">
 		        <li onclick="grade1(this)">哈尔滨</li>
@@ -152,8 +172,8 @@
 		        <li onclick="grades(this)">经济技术开发区</li>
 		    </ul>
 		</div>
-		<!-- End grade -->
-		<!-- Category -->
+		End grade
+		Category
 		<div class="Sort-eject Sort-height">
 		    <ul class="Sort-Sort" id="Sort-Sort">
 		        <li onclick="Sorts(this)">智能排序</li>
@@ -165,10 +185,13 @@
 		        <li onclick="Sorts(this)">价格最高</li>
 		    </ul>
 		</div>
+	 -->
+	
 		<!-- End Category -->
 		<div id="container">		
 			<div id="main">
 				<div class="guess-like">
+	
 					<dl class="list">
 	
 						<dd>
@@ -184,14 +207,14 @@
 											</div>
 											<div class="dealcard-block-right">
 												<div class="dealcard-brand single-line">${name}</div>
-												<div class="title text-block">${cataname}</div>
+												<div class="title text-block" style="color: blueviolet;">${cataname}</div>
 
 												<div class="price">
 													<span class="strong">${price}</span>
 													<span class="strong-color">元</span>
-													<span class="tag">多优惠+</span>
+													<span class="tag">${cataname_parent}</span>
 													<span class="line-right">
-										                                        已售50293
+										                                        已售${sale_volume}
 										            </span>
 												</div>
 											</div>
@@ -223,190 +246,10 @@
 										</div>
 									</a>
 								</dd>
-								<dd>
-									<a href="mall-detail.html" class="react">
-										<div class="dealcard">
-											<div class="dealcard-img imgbox">
-												<span></span>
-												<img src="img/thumb_543ba5688cb7b.jpg"/>
-											</div>
-											<div class="dealcard-block-right">
-												<div class="dealcard-brand single-line">锅里添香美食涮烤自助餐厅</div>
-												<div class="title text-block">[宿州路]单人自助中餐</div>
-												<div class="price">
-													<span class="strong">49.9</span>
-													<span class="strong-color">元</span>
-													<span class="tag">多优惠+</span>
-													<span class="line-right">
-										                                        已售50293
-										            </span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</dd>
-								<dd>
-									<a href="mall-detail.html" class="react">
-										<div class="dealcard">
-											<div class="dealcard-img imgbox">
-												<span></span>
-												<img src="img/thumb_543ba5688cb7b.jpg"/>
-											</div>
-											<div class="dealcard-block-right">
-												<div class="dealcard-brand single-line">锅里添香美食涮烤自助餐厅</div>
-												<div class="title text-block">[宿州路]单人自助中餐</div>
-												<div class="price">
-													<span class="strong">49.9</span>
-													<span class="strong-color">元</span>
-													<span class="tag">多优惠+</span>
-													<span class="line-right">
-										                                        已售50293
-										            </span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</dd>
-								<dd>
-									<a href="mall-detail.html" class="react">
-										<div class="dealcard">
-											<div class="dealcard-img imgbox">
-												<span></span>
-												<img src="img/thumb_543ba5688cb7b.jpg"/>
-											</div>
-											<div class="dealcard-block-right">
-												<div class="dealcard-brand single-line">锅里添香美食涮烤自助餐厅</div>
-												<div class="title text-block">[宿州路]单人自助中餐</div>
-												<div class="price">
-													<span class="strong">49.9</span>
-													<span class="strong-color">元</span>
-													<span class="tag">多优惠+</span>
-													<span class="line-right">
-										                                        已售50293
-										            </span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</dd>
-								<dd>
-									<a href="mall-detail.html" class="react">
-										<div class="dealcard">
-											<div class="dealcard-img imgbox">
-												<span></span>
-												<img src="img/thumb_543ba5688cb7b.jpg"/>
-											</div>
-											<div class="dealcard-block-right">
-												<div class="dealcard-brand single-line">锅里添香美食涮烤自助餐厅</div>
-												<div class="title text-block">[宿州路]单人自助中餐</div>
-												<div class="price">
-													<span class="strong">49.9</span>
-													<span class="strong-color">元</span>
-													<span class="tag">多优惠+</span>
-													<span class="line-right">
-										                                        已售50293
-										            </span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</dd>
-								<dd>
-									<a href="mall-detail.html" class="react">
-										<div class="dealcard">
-											<div class="dealcard-img imgbox">
-												<span></span>
-												<img src="img/thumb_543ba5688cb7b.jpg"/>
-											</div>
-											<div class="dealcard-block-right">
-												<div class="dealcard-brand single-line">锅里添香美食涮烤自助餐厅</div>
-												<div class="title text-block">[宿州路]单人自助中餐</div>
-												<div class="price">
-													<span class="strong">49.9</span>
-													<span class="strong-color">元</span>
-													<span class="tag">多优惠+</span>
-													<span class="line-right">
-										                                        已售50293
-										            </span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</dd>
-								<dd>
-									<a href="mall-detail.html" class="react">
-										<div class="dealcard">
-											<div class="dealcard-img imgbox">
-												<span></span>
-												<img src="img/thumb_543ba5688cb7b.jpg"/>
-											</div>
-											<div class="dealcard-block-right">
-												<div class="dealcard-brand single-line">锅里添香美食涮烤自助餐厅</div>
-												<div class="title text-block">[宿州路]单人自助中餐</div>
-												<div class="price">
-													<span class="strong">49.9</span>
-													<span class="strong-color">元</span>
-													<span class="tag">多优惠+</span>
-													<span class="line-right">
-										                                        已售50293
-										            </span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</dd>
-								<dd>
-									<a href="mall-detail.html" class="react">
-										<div class="dealcard">
-											<div class="dealcard-img imgbox">
-												<span></span>
-												<img src="img/thumb_543ba5688cb7b.jpg"/>
-											</div>
-											<div class="dealcard-block-right">
-												<div class="dealcard-brand single-line">锅里添香美食涮烤自助餐厅</div>
-												<div class="title text-block">[宿州路]单人自助中餐</div>
-												<div class="price">
-													<span class="strong">49.9</span>
-													<span class="strong-color">元</span>
-													<span class="tag">多优惠+</span>
-													<span class="line-right">
-										                                        已售50293
-										            </span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</dd>
-								<dd>
-									<a href="mall-detail.html" class="react">
-										<div class="dealcard">
-											<div class="dealcard-img imgbox">
-												<span></span>
-												<img src="img/thumb_543ba5688cb7b.jpg"/>
-											</div>
-											<div class="dealcard-block-right">
-												<div class="dealcard-brand single-line">锅里添香美食涮烤自助餐厅</div>
-												<div class="title text-block">[宿州路]单人自助中餐</div>
-												<div class="price">
-													<span class="strong">49.9</span>
-													<span class="strong-color">元</span>
-													<span class="tag">多优惠+</span>
-													<span class="line-right">
-										                                        已售50293
-										            </span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</dd>
-								
-								-->
-								
+								-->					
 							</dl>
 						</dd>
-
-
-						
+	
 						<dd class="db">
 							<a class="react " href="#">
 								 <div class="moreone" id="emLoadnull">加载更多</div>
@@ -454,8 +297,10 @@
 	}
 
 	$(function () {
-		//商品列表
-		var data = {'page':next_page ++, };
+		//商品列表	
+		var GET = $.urlGet();
+		var cataid = GET['cataid'];
+		var data = {'cataid':cataid};
 	 	get_product_list(data, product_list_callback);
 	 	
 	 	/* 点击 加载更多 */	
@@ -504,7 +349,18 @@
 	
 	});
 	
+	//商品列表
+	function ajax_request_server_callback(res){
+		$('#template_cata_list').tmpl(res.data).appendTo('#cata_list');
+		console.log(res.data);
+	};
 
+	$(function () {
+			var function_name = "product_cata_supplier";
+			var request_data = {'sellerid':sellerid};
+			ajax_request_server(function_name, request_data, ajax_request_server_callback);
+		
+	});
 	
 	</script>
 	

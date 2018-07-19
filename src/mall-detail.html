@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="css/common.css">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
 		<link rel="stylesheet" href="css/reset.css">
 		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
@@ -30,6 +31,17 @@
  		
  		<script type="text/javascript" src="js/abot.function.js"></script>
 		
+		<style>
+		 .a img{
+		 max-width: 100%;
+		 max-height: 100%;
+		 }
+		 
+		 #product_describe p{
+			margin: 10px;
+			line-height: 20px;
+		 }
+		</style>
 	</head>
 	<body>
 		<header class="hasManyCity hasManyCitytwo" id="header">
@@ -47,20 +59,20 @@
 				<div class="warp warptwo clearfloat">
 					<div class="detail clearfloat" >
 						<!--banner star-->
-						<section class="banner bannertwo">
+						<section class="banner bannertwo" style="height: auto;">
 							<div class="swiper-container swiper-container1">
 								<div class="swiper-wrapper bannerwidth">
-									<div class="swiper-slide swiper-slide-duplicate" style="width: 342px;height: 320px;"> 
+									<div class="swiper-slide swiper-slide-duplicate" style="width: 100%;"> 
 										<a href="#" >
 											<img src=" " id="product_picture">
 										</a>
 									</div>
-									<div class="swiper-slide" style="width: 342px;height: 320px;">
+									<div class="swiper-slide" style="width: 100%;">
 										<a href="#">
 											<img src="img/21.jpg">
 										</a>
 									</div>
-									<div class="swiper-slide swiper-slide-duplicate" style="width: 342px;height: 320px;">
+									<div class="swiper-slide swiper-slide-duplicate" style="width: 100%;">
 										<a href="#">
 											<img src="img/21.jpg">
 										</a>
@@ -87,24 +99,17 @@
 								</div>
 							</div>
 							<div class="xia clearfloat">
-								<p class="jifen fl box-s" ><samp id="product_price"></samp>购物币<span class="fr">销量8件</span></p>
+								<p class="jifen fl box-s" ><samp id="product_price"></samp>元<span class="fr">销量<font id="sale_volume"></font>件</span></p>
 								
 							</div>
 						</div>
 						
-						<div class="middle clearfloat box-s">
+						<div class="middle clearfloat box-s" style="padding: 0;">
 							<a href="#">
-								<span class="fl" >商品详情：</span>
-								<!-- <i class="iconfont icon-jiantou1 fr"></i> -->
-								<span id="product_brief" ></span>
+								<span class="fl" style="float: none;">商品详情：</span>					
+								<div class="a" id="product_describe" ></div>
 							</a>
 						</div>
-						<!-- <div class="middle clearfloat box-s">
-							<a href="#">
-								<span class="fl">商品评价</span>
-								<i class="iconfont icon-jiantou1 fr"></i>
-							</a>
-						</div> -->
 					</div>
 					
 				</div>
@@ -114,16 +119,16 @@
 		<!--footerone star-->
 		<div class="footerone clearfloat">
 			<div class="left clearfloat fl">
-				<ul>
-					<li>
-						<a href="mall.html">
-							<i class="iconfont icon-shangcheng"></i>
+				<ul style="line-height: normal;padding-top: 5px;">
+					<li style="padding-top: 0;">
+						<a href="index.html">
+							<i class="iconfont icon-shangcheng" style="font-size: 20px;"></i>
 							<p>商城</p>
 						</a>
 					</li>
-					<li>
+					<li style="padding-top: 0;">
 						<a href="http://yanyubao.tseo.cn/Home/OnlineChat/chat.html?ensellerid=fyzNUPkaW">
-							<i class="iconfont icon-kefu1"></i>
+							<i class="iconfont icon-kefu1" style="font-size: 20px;"></i>
 							<p>客服</p>
 						</a>
 					</li>				
@@ -131,7 +136,7 @@
 			</div>
 			<div class="right clearfloat fl">
 			
-				<a href="#"><span class="btn fl"  id="btnLogin">加入购物车</span></a>
+				<a href="javascript:;"><span class="btn fl"  id="btnLogin">加入购物车</span></a>
 				
 				<a href="self-torder.html" class="btn btnone fl">立即购买</a>
 			</div>
@@ -202,15 +207,23 @@
 		$('#product_price').html(res.data.price);
 		$('#product_picture').attr('src',res.data.picture);
 		$('#product_brief').html(res.data.brief);
+		$('#product_describe').html(res.data.describe);
+		$('#sale_volume').html(res.data.sale_volume);
+		
 		
 	};
 	//加入购物车
 	function add_shopcart_callback(res){
+		console.log(1111111)
+		console.log(res)
 		//提示加入成功，继续购物  或 去购物车结算
 		if(res.code != 1){
-			alert("添加失败");
+			alert(res.msg);
+			return;
 			//window.location.href="login.html";
-		}else{
+		}
+		alert(res.msg)
+		/* else{
 			var r=confirm("添加成功是否继续购物");
 			if (r==true)
 			  {
@@ -220,7 +233,7 @@
 			  {
 				window.location.href="shopcar.html";
 			  }
-		}
+		} */
 			
 		
 	};
@@ -232,6 +245,7 @@
 		console.log(productid);
 
 		var function_name = "product_detail";
+		
 		var request_data = {'productid':productid};
 	
 		//商品详情
@@ -248,12 +262,16 @@
 			}
 	
 			var userid = user_info.userid;
+			
 			var checkstr = user_info.checkstr;
 	
 			var function_name = "cart_add";
+			
 			var amount = 1;
+			
 			var request_data = {'sellerid':sellerid, 'productid':productid, 'userid':userid, 'checkstr':checkstr,'amount':amount};
-	
+
+
 			ajax_request_server(function_name, request_data, add_shopcart_callback);
 	
 	});

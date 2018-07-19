@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>手机验证码登录</title>
+		<title></title>
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-touch-fullscreen" content="yes">
@@ -11,7 +11,9 @@
 		<meta name="format-detection" content="address=no">
 		<link rel="stylesheet" type="text/css" href="css/common.css">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
-		<link rel="stylesheet" type="text/css" href="css/ionic.css">
+		<link rel="stylesheet" type="text/css" href="css/ionic.css"> 
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"> 
+		
 		<link rel="stylesheet" href="css/reset.css">
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		
@@ -24,12 +26,19 @@
 	<body>
 		<!--header star-->
 		<header class="hasManyCity hasManyCitytwo" id="header">
-			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<a href="javascript:history.go(-1)" class="fl fanhui">
+			<!-- <i class="iconfont icon-fanhui"> -->
+			</i>
+			</a>
 			<div class="header-tit">
 				登录中心
 			</div>
-			<a href="setup.html" class="fr shoucang sousuo"><i class="iconfont icon-shezhi"></i></a>
-			<a href="#" class="fr shoucang sousuo"><i class="iconfont icon-kefu1"></i></a>			
+			<a href="setup.html" class="fr shoucang sousuo">
+			<!-- <i class="iconfont icon-shezhi"></i> -->
+			</a>
+			<a href="#" class="fr shoucang sousuo">
+			<!-- <i class="iconfont icon-kefu1"></i> -->
+			</a>			
 		</header>
 	    <!--header end-->
 	
@@ -45,18 +54,18 @@
         </div>
          <div class="login_box">
          <div class="login_li">
-            <div class="input_account_icon">
-              <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:3px;">&#xe60d;</i>
+            <div class="input_account_icon" style="width:30px;height:30px;">
+              <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:48px;">&#xe60d;</i> 
             </div>
-            <input type="tel" placeholder="请输入11位手机号" class="input_account" required name="mobile" id="mobile" />
+            <input type="tel" placeholder="请输入11位手机号" style="margin-left:33px;padding-left:10px;" class="input_account" required name="mobile" id="mobile" />
             <div style="clear: both;"></div>
          </div>
           <div class="login_li">
-             <div class="input_account_icon">
-             <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:3px;">&#xe687;</i>
+             <div class="input_account_icon" style="width:30px;height:30px;">
+             <i class="Hui-iconfont" style="font-size:20px;color:#999;position:relative;top:25px;">&#xe687;</i> 
             </div>
             <input type="hidden" name="tokenstr" id="tokenstr" />
-            <input type="tel" placeholder="图形验证码" name="verifycode" id="verifycode"  class="input_yzm"/>
+            <input type="tel" placeholder="图形验证码" style="margin-left:33px;padding-left:10px;" name="verifycode" id="verifycode"  class="input_yzm"/>
                <div class="input_verify" >
                <img src="" onClick="this.src='./shopapp_api.php?g=Yanyubao&m=Shang&a=getverifycodeimg&tokenstr=tokenstr?' + new Date().getTime();" class="verify_img" id="refresh2">
               </div>
@@ -65,10 +74,10 @@
 
 
           <div class="login_li">
-             <div class="input_account_icon">
-             <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:3px;">&#xe687;</i>
+             <div class="input_account_icon" style="width:30px;height:30px;">
+             <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:25px;">&#xe687;</i> 
             </div>
-            <input type="tel" placeholder="短信验证码"  class="input_yzm" id="tokenstr2"/>
+            <input type="tel" placeholder="短信验证码" style="margin-left:33px;padding-left:10px;" class="input_yzm" id="tokenstr2"/>
                <button id="btn_login_send_sms" class="button button-energized  button-small input_verify" style="background:#06c1ae;" >发送验证码</button>
              <div style="clear: both;"></div>
          </div>
@@ -99,18 +108,29 @@
 <script type="text/javascript">
 
 var tokenstr = ''; 	
+
 function login_get_tokenstr_callback(res){
+	
 	if(res.code != 1){
+		
 		alert('连接服务器失败！');
+		
 		return;
 	}
+	
 	tokenstr = res.tokenstr;
+	
 	var url_img = http_server+'?g=Yanyubao&m=Shang&a=getverifycodeimg&tokenstr='+tokenstr;
-		$('#refresh2').attr('src', url_img);		
+	
+		$('#refresh2').attr('src', url_img);	
+		
 }
 function login_send_sms_callback(res){
+	
 	if(res.code != 1){
+		
 		alert(res.msg);
+		
 		return;
 	}
 	
@@ -118,21 +138,36 @@ function login_send_sms_callback(res){
 }
 
 function login_by_sms_code_callback(res){
+	
 	if(res.code != 1){
+		
 		alert(res.msg);
+		
 		return;
 	}	
 	var userid = res.userid;
+	
 	var checkstr = res.checkstr;
+	
 	set_login_info(userid, checkstr);//本地保存用户信息
 	
-	self.location.href = 'center.html';
+	self.location.href = 'index.html';
+}
+
+function login_list_callback(res){
+	
+	var pic = res.data.icon;
+	
+	$(".login_logo").attr('src',pic);
 }
 
 $(function(){
 	login_get_tokenstr(login_get_tokenstr_callback);
+	
 	$("#btn_login_send_sms").click(function(){
+		
 		var mobile = $("#mobile").val();
+		
 		var verifycode = $("#verifycode").val();
 		
 		login_send_sms(mobile, verifycode, tokenstr, login_send_sms_callback);
@@ -140,11 +175,20 @@ $(function(){
 	});
 	
 	$("#btn_login_by_sms_code").click(function(){
+		
 		var mobile = $("#mobile").val();
+		
 		var verifycode_sms = $("#tokenstr2").val();
+		
 		login_by_sms_code(mobile, verifycode_sms, login_by_sms_code_callback);
+		
 		login_get_tokenstr(login_get_tokenstr_callback);
+		
 	});
+	
+	var login_function_name = 'get_shop_info';
+	
+	 ajax_request_server(login_function_name,tokenstr, login_list_callback);
 	
 });
 	</script>

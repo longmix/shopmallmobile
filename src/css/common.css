@@ -5303,6 +5303,7 @@ label {
 .h-bottom ul {
 	position: relative;
 	z-index: 999;
+	bottom:10px;
 }
 
 .h-bottom ul li {

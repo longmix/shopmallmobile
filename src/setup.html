@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>管理中心</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" href="css/reset.css">
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/iscroll.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+		<script src="js/hmt.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script src="js/swiper.min.js" type="text/javascript" ></script>
+		
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/static/jquery.tmpl.js"></script>
+		<script type="text/javascript" src="js/abot.js"></script>
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/api/shopapp.js"></script>
+		<script type="text/javascript" src="js/abot.function.js"></script>
+		
+	</head>
+	<body>
+		<header class="hasManyCity hasManyCitytwo" id="header">
+			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<div class="header-tit">
+				管理中心
+			</div>		
+		</header>
+		<div id="container">		
+			<div id="main">
+		    	<div class="plist clearfloat data">
+					<ul>
+						<li class="clearfloat touxiang">
+							<a href="#">
+								<p class="fl">头像</p>
+								<i class="fr"><img id="headerimg" src="img/tou.png" onchange="handleFiles(this,'icon')"></i>								
+							</a>
+							<!-- <div class="content">
+								<img alt=""  id="img"  >
+								<input  type="file" onchange="handleFiles(this,'icon')">
+							</div> -->
+                    
+						</li>
+						<li class="clearfloat">
+							<a href="#">
+								<p class="fl">昵称</p>
+								<input type="text" class="fr shuru" name="" id="niname" value="" placeholder="孙瑾晨" />
+							</a>
+						</li>
+						
+						<li class="clearfloat">
+							<a href="#">
+								<p class="fl">手机号</p>
+								<input type="text" class="fr shuru phone" name="" id="old_phone" value="" placeholder="孙瑾晨" />
+								<button onclick="change_phone()" style="margin-top:8px;">更换</button>
+							</a>
+						</li>
+						<li class="clearfloat">
+							<a href="#">
+								<p class="fl">性别</p>
+								<span class="fr">女</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<p class="setuptit box-s">账户设置</p>
+				<div class="plist plistwo clearfloat data">
+					<ul>
+						<li class="clearfloat">
+							<a href="#">
+								<p class="fl">微信</p>
+								<input type="text" class="fr shuru" name="" id="" value="已绑定" placeholder="" />
+							</a>
+						</li>
+						<li class="clearfloat">
+							<a href="#">
+								<p class="fl">QQ</p>
+								<span class="fr">未绑定</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="center-btn db ra3" id="update">确定修改</a>
+			</div>
+	    </div>
+	</body>
+	<script type="text/javascript">
+	
+	//在type为file的input上面添加这个onchenge事件方法名为PreviewImage(this)
+	function PreviewImage(imgFile) { 
+		
+	    //使用这个方法来临时创建一个文件的链接，参数是一个file或者blob
+	    var path = URL.createObjectURL(imgFile.files[0]);
+	    console.log(1232342434)
+		console.log(path)
+	    //将链接赋值给上面的图片src路径
+	    $("#img").prop("src",path)
+	    //销毁上面创建的链接
+	    //URL.revokeObjectURL(path);
+	 } 
+	
+	function uploadImg()
+    { 
+        var names=$("#imgupload").val().split(".");
+        
+        if((names[1]!="gif")&&(names[1]!="GIF")&&(names[1]!="jpg")&&(names[1]!="JPG")&&(names[1]!="JPEG")&&(names[1]!="jpeg")
+            &&(names[1]!="png")&&(names[1]!="PNG"))
+        {
+            /*$("#imgError").html(""+"图片必须为gif,jpg,png,jpeg格式");
+            $("#imgError").css('display', 'block');*/
+            alert('图片必须为gif,jpg,png,jpeg格式');
+            return;
+        }
+        
+        $("#formImg").submit();
+    }
+    
+    function callback(message,success)
+    {	
+        if(success==false)
+        {
+            $("#imgError").html(""+message);
+            $("#imgError").show();
+        }
+        else{
+            $("#imgError").hide();
+            $("#img").attr("src",message);
+            $("#img").css("display",'block');
+            $("#imgurl").val(message);
+        }
+    } 
+	//修改手机号码
+function change_phone(){
+		
+	var old_phone = $("#old_phone").val();
+	
+	var loginItem = get_login_info();//获取登录信息 
+	
+	var userid = loginItem.userid;
+	
+	var checkstr = loginItem.checkstr;
+	
+	location.href = "http://yanyubao.tseo.cn/User/mobile_replace.html"
+}
+	
+function get_user_info_callback(res){
+	
+	var headerimg = res.data.headimgurl;
+	
+	$("#headerimg").attr('src',headerimg);
+	
+	$("#niname").val(res.data.nickname);
+	
+	$(".phone").val(res.data.mobile);
+	
+}
+function get_user_nickname_callback(res){
+	
+	$("#update").click(function(){
+		
+		if(res.code == 1){
+			
+			alert(res.msg);
+			
+			window.location.reload();	
+		}	
+		alert(res.msg);	
+	})
+}
+	$(function(){
+		
+		var function_name = "get_user_info";
+		
+		var function_nickname_name = "user_info_save";
+		
+		var loginItem = get_login_info();//获取登录信息 
+		
+		var userid = loginItem.userid;
+		
+		var checkstr = loginItem.checkstr;
+		
+		var nickname = $("#niname").val();
+		
+		var request_data = {'userid':userid, 'checkstr':checkstr};
+		
+		ajax_request_server(function_name, request_data, get_user_info_callback);
+		
+		var request_nickname_data = {'userid':userid, 'checkstr':checkstr,'nickname':nickname};
+		
+		ajax_request_server(function_nickname_name, request_nickname_data, get_user_nickname_callback);
+		
+	
+	})
+	
+	</script>
+</html>

@@ -28,12 +28,18 @@
 	<body>
 		<!--header star-->
 		<header class="hasManyCity hasManyCitytwo" id="header">
-			<a href="index.html" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<a href="index.html" class="fl fanhui">
+			<i class="iconfont">&#xe6d4;</i>
+			</a>
 			<div class="header-tit">
 				会员中心
 			</div>
-			<a href="setup.html" class="fr shoucang sousuo"><i class="iconfont icon-shezhi"></i></a>
-			<a href="#" class="fr shoucang sousuo"><i class="iconfont icon-kefu1"></i></a>			
+			<a href="setup.html" class="fr shoucang sousuo">
+			 <i class="iconfont">&#xe61d;</i> 
+			</a>
+			<a href="#" class="fr shoucang sousuo">
+		<i class="iconfont">&#xe68a;</i>
+			</a>			
 		</header>
 	    <!--header end-->
 	    <div id="container">		
@@ -82,7 +88,7 @@
 			    			<ul>
 			    				
 			    				<li ui-sref="tab.dingdan({'type':'1'})">
-			    					<a href="wmai-order.html">
+			    					<a href="order.html">
 			    						<img src="img/money.png"/>
 			    						<span>待付款</span>
 			    					</a>
@@ -110,19 +116,21 @@
 			    		<div class="shang xia clearfloat">
 			    			<ul>
 			    				<li>
-			    					<a href="tuan.html">
-			    						<p><i class="iconfont icon-tuangou"></i></p>
+			    					<a onclick="goto_web('tuiguang')" id="tuiguang"  target="_Blank">
+			    						<p>
+			    							<i class="iconfont icon-tuangou"></i>
+			    						</p>
 			    						<span>推广联盟</span>
 			    					</a>
 			    				</li>
 			    				<li>
-			    					<a href="mall.html">
+			    					<a onclick="goto_web('qrcode')" id="qrcode"  target="_Blank">
 			    						<p><i class="iconfont icon-baihuo"></i></p>
 			    						<span>推广二维码</span>
 			    					</a>
 			    				</li>
 			    				<li>
-			    					<a href="remen.html">
+			    					<a href="recharge.html">
 			    						<p><i class="iconfont icon-shangjia"></i></p>
 			    						<span>我的现金</span>
 			    					</a>
@@ -164,43 +172,43 @@
 			    			<li class="box-s">
 			    				<a href="jfguanli.html">
 			    					<p class="fl">我的积分</p>
-			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    					<i class="iconfont fr">&#xe6d7;</i>
 			    				</a>
 			    			</li>
 			    			<li class="box-s">
 			    				<a href="#">
 			    					<p class="fl">我的捐赠</p>
-			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    					<i class="iconfont fr">&#xe6d7;</i>
 			    				</a>
 			    			</li>
 			    			<li class="box-s">
 			    				<a href="shopcar.html">
 			    					<p class="fl">我的购物车</p>
-			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    					<i class="iconfont fr">&#xe6d7;</i>
 			    				</a>
 			    			</li>
 			    			<li class="box-s">
-			    				<a href="xiaoxi.html">
+			    				<a href="wodeshoucang.html">
 			    					<p class="fl">我的收藏</p>
-			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    					<i class="iconfont fr">&#xe6d7;</i>
 			    				</a>
 			    			</li>
 			    			<li class="box-s">
 			    				<a href="address.html">
 			    					<p class="fl">收货地址</p>
-			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    					<i class="iconfont fr">&#xe6d7;</i>
 			    				</a>
 			    			</li>
 			    			<li class="box-s">
-			    				<a href="huifu.html">
+			    				<a href="zhifubao.html">
 			    					<p class="fl">支付宝账号</p>
-			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    					<i class="iconfont fr">&#xe6d7;</i>
 			    				</a>
 			    			</li>
 			    			<li class="box-s">
-			    				<a href="#">
+			    				<a href="bank.html">
 			    					<p class="fl">银行卡账号</p>
-			    					<i class="iconfont icon-jiantou1 fr"></i>
+			    					<i class="iconfont fr">&#xe6d7;</i>
 			    				</a>
 			    			</li>
 			    		</ul>
@@ -214,45 +222,123 @@
 	
 	
 <script type="text/javascript">
+
 function get_user_info_callback(res){
+	
 	if(res.code != 1){
+		
 		alert(res.msg);
+		
 		return;
 	}
 	
-	var nickname =res.data.nickname;//昵称
-	var mobile=res.data.mobile;//手机号、账号
-	var headimgurl=res.data.headimgurl;//头像
-	var balance=res.data.balance;//现金余额
-	var balance_zengsong=res.data.balance_zengsong;//赠送
+	var nickname = res.data.nickname;//昵称
+	
+	var mobile = res.data.mobile;//手机号、账号
+	
+	var headimgurl = res.data.headimgurl;//头像
+	
+	var balance = res.data.balance;//现金余额
+	
+	var balance_zengsong = res.data.balance_zengsong;//赠送
+	
+	var balance_jifen = res.data.score; 
+	
 	$('#nickname').text(nickname);
+	
 	$('#moudle').text(mobile);
+	
 	$('#user_img').attr('src',headimgurl);
+	
 	$("#balance").text(balance);
+	
 	$("#balance_zengsong").text(balance_zengsong);
-	$("#balance_zengsong").click(function(){
-		console.log(res.data);
-	});
+	
+	$("#balance_jifen").text(balance_jifen)
 
 }
 
-$(function(){
-	if(!is_user_login()){
-		$("#del_login").hide();
-		return;
-	}
+function goto_web_tuiguang_callback(res){
+	
+	var url = res.oneclicklogin;
+	
+	console.log(url)
+	
+	var tuiguang_url =  "http://yanyubao.tseo.cn/Distributor/fenxiao.html?oneclicklogin="+url+"/";
+	
+	console.log(tuiguang_url)
+	
+	$("#tuiguang").attr('href',tuiguang_url);
+	
+	//self.location = tuiguang_url; 
+	
+	//window.location.replace(tuiguang_url);
+	
+	//window.location.href = tuiguang_url;
+}
+
+function goto_web_qrcode_callback(res){
+	
+	var url = res.oneclicklogin;
+	
+	var tuiguang_url =  "http://yanyubao.tseo.cn/Distributor/fenxiao.html?oneclicklogin="+url+"/";
+	
+	$("#qrcode").attr('href',tuiguang_url);
+	
+	//self.location = tuiguang_url;
+	
+	//window.location.replace(tuiguang_url);
+	
+}
+
+function goto_web(goto_url){
+	
 	var loginItem = get_login_info();
 	
-	var function_name = "order_list";
-
 	var userid = loginItem.userid;
 	
 	var checkstr = loginItem.checkstr;
 	
+	var request_data = {'userid':userid,'checkstr':checkstr };
+	
+	var function_click_name = 'one_click_login_str';
+	
+	var request_click_data = {'userid':userid,'checkstr':checkstr };
+	
+	if(goto_url == 'tuiguang'){
+		
+		ajax_request_server(function_click_name, request_click_data, goto_web_tuiguang_callback);
+	}
+	
+	else if(goto_url == 'qrcode'){
+		
+		ajax_request_server(function_click_name, request_click_data, goto_web_qrcode_callback);
+	
+	}
+	
+}
+
+$(function(){
+	if(!is_user_login()){
+		
+		$("#del_login").hide();
+		
+		return;
+	}
+	
+	var loginItem = get_login_info();
+	
+	var userid = loginItem.userid;
+	
+	var checkstr = loginItem.checkstr;
+	
+	var function_name = "order_list";
+	
 	var request_data = {'userid':userid, 'checkstr':checkstr };
 	
-	 get_user_info(loginItem.userid,loginItem.checkstr,get_user_info_callback);	 
+	get_user_info(loginItem.userid,loginItem.checkstr,get_user_info_callback);	 
 });
+
 
 
 </script>

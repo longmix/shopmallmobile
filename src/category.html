@@ -52,12 +52,13 @@
 					<script id="template_cata_list" type="text/javascript">
 						<p class="tit box-s">
 							${name}
-							<a href="#" class="fr">发布信息</a>
 						</p>
 					
 						<div class="bottom clearfloat box-s">
 							<ul >
-								<li><a href="#">${sub_cata[0].name}</a></li>		
+							{{each(i,data) sub_cata}}
+								<li><a href="mall.html?cataid=${data.cataid}">${data.name}</a></li>	
+							{{/each}}
 							<!--
 								<li><a href="#">租房</a></li>
 								<li><a href="#">二手房</a></li>
@@ -137,13 +138,8 @@
 	//商品列表
 	function ajax_request_server_callback(res){
 		
-		//$('#product_name').html(res.data[0].name);
-		
-	//	for(var i=0;i<res.data.lenght;i++){
-	//		get_sub_cata_list(res.data[i].cataid,cata_list_callback);
-	//	}
-		
 		$('#template_cata_list').tmpl(res.data).appendTo('#cata_list');
+		
 	};
 
 	$(function () {
@@ -155,19 +151,7 @@
 		
 	});
 
-	/*
-	//滚动广告
-	function get_ad_list_callback(res){
-		$('#template_ad_list').tmpl(res.data).appendTo('#ad_list');
-	}
 	
-	//滚动广告
-	$(function () {
-		var function_name = "get_flash_ad_list";
-		var request_data = {'page':1};
-		ajax_request_server(function_name, request_data,get_ad_list_callback);
-	});
-	*/
 	</script>
 	
 	</body>

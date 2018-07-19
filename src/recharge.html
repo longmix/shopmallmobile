@@ -20,6 +20,11 @@
 		<script src="js/hmt.js" type="text/javascript"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script src="js/swiper.min.js" type="text/javascript" ></script>
+		
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/static/jquery.tmpl.js"></script>
+		<script type="text/javascript" src="js/abot.js"></script>
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/api/shopapp.js"></script>
+		<script type="text/javascript" src="js/abot.function.js"></script>
 	</head>
 	<body>
 		<!--header star-->
@@ -32,41 +37,48 @@
 	    <!--header end-->
 	    <div id="container">		
 			<div id="main">
-			    <div class="warp warpthree clearfloat">
-			    	<div class="h-top h-topone clearfloat box-s">
-			    		<p>74.<samp>00</samp></p>
-			    		<span>账户余额(元)</span>
-			    	</div>
-			    	<div class="recharge clearfloat">
-			    		<div class="czhi clearfloat box-s">
-			    			<p>充值金额</p>
-			    			<input type="text" id="" value="" placeholder="请输入金额" />
-			    			<span>元</span>
-			    		</div>
-			    		<div class="czhi clearfloat box-s" id='Zhifu'>
-			    			<p>支付方式</p>
-			    			<i class="iconfont icon-xiala fr"></i>
-			    		</div>
-			    		<!--<a href="#" class="center-btn center-btntwo db ra3">点击上传文件</a>-->
-			    		<div class="guize clearfloat box-s ra3">
-			    			<h3>充值规则</h3>
-			    			<div class="content clearfloat">
-		    				       安徽智迈科技股份有限公司成立于2009年。总部位于合肥市高新区，
-		    				       投资或控股近10余家企业。智迈是一家专注于互联网创新产品研发
-		    				       及技术服务解决方案的高新技术企业。
-			    			</div>
-			    		</div>
-			    		<div class="bottom clearfloat">
-			    			<a href="#" class="db fl btn ra3">确定</a>
-			    			<a href="#" class="db fr btn ra3">取消</a>
-			    		</div>
-			    	</div>	    	
-			    </div>
-			</div>
+			   		<script id="price_item" type="text/x-jquery-tmpl">
+		    		<li class="item" ng-repeat="list in balance_list" style="width:100%;height:71px; color:black;padding:20px;border-bottom:1px solid gray">
+		                <span style="float: left;" class="ng-binding">${balance_msg}</span>
+		                <span style="float: right; font-size: 12px;" class="ng-binding">${log_time}</span>
+		                <div style="clear: both;"></div>
+		                <p style="margin:10px 0 0 0; color:black" class="ng-binding">金额：${balance}</p>
+		       		</li>
+					</script>
+
+			</div>	
+		   	
 		</div>
+		
 	</body>
 	<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
 	<script src="js/mui.min.js"></script>
 	<script src="js/mui.picker.min.js"></script>
-	<script src="js/other.js"></script>
+	 <script src="js/other.js"></script>
+	<script type="text/javascript">
+	
+	function price_list_callback(res){
+		
+		console.log(222)
+		
+		$("#price_item").tmpl(res.data).appendTo("#main");
+	}
+	
+		$(function(){
+			
+			var loginItem = get_login_info();
+			console.log(loginItem)
+			var userid = loginItem.userid;
+			
+			
+			var checkstr = loginItem.checkstr;
+			
+			var function_name = "user_balance_log";
+			
+			var request_data = {'userid':userid,'checkstr':checkstr};
+			
+			 ajax_request_server(function_name,request_data, price_list_callback);
+				
+		})
+	</script>
 </html>

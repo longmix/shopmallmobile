@@ -30,7 +30,8 @@
 	</head>
 	<body>
 		<header class="hasManyCity hasManyCitytwo" id="header">
-			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<a href="javascript:history.go(-1)" class="fl fanhui">
+			<i class="iconfont">&#xe6d4;</i></a>
 			<div class="header-tit">
 				团购订单
 			</div>		
@@ -54,8 +55,10 @@
 							<dl class="list listtwo list-in">						
 								<dd>
 									<div class="orderbh clearfloat box-s">
-										订单编号20164546151515
+										订单编号<span>${orderno}</span>
+										<span class="zhuangtai" style="color:lime;margin-left:70px;">${status2}</span>
 									</div>
+										{{each orderProduct}}
 									<a href="#" class="react">
 										<div class="dealcard dealcardtwo clearfloat">
 											<div class="dealcard-img imgbox">
@@ -63,22 +66,20 @@
 											</div>
 											<div class="dealcard-block-right dealcard-block-righttwo">
 												<div class="dealcard-brand dealcard-brandtwo single-line">
-													<span class="poi-name icon-count-3">水电费</span>
+													<span class="poi-name icon-count-3">${product_name}</span>
 												</div>
 												<div class="price pricetwo">
-													<span class="address">数量：1</span>									
+													<span class="address">数量：${amount}</span>									
 												</div>	
 												<div class="price pricetwo">
 													<span class="address">总价：</span>
-													<span class="strong">¥49</span>
+													<span class="strong">${pay_price}</span>
 												</div>										
 											</div>
 										</div>
 									</a>
-									<div class="order-bottom clearfloat box-s">
-										<p class="fl">未付款</p>
-										<a href="torder.html" class="fr">付款</a>
-									</div>
+									{{/each}}
+									
 								</dd>
 
 							</dl>
@@ -136,7 +137,7 @@ function order_list_callback(res){
 	console.log(1111111111111)
 	console.log(res)
 	
-	$("#order_product").tmpl(res).appendTo('#order_list');
+	$("#order_product").tmpl(res.orderList).appendTo('#order_list');
 	
 }
 

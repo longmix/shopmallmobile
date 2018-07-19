@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>支付宝提现账号</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" href="css/reset.css">
+		
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	    <script type="text/javascript" src="js/iscroll.js"></script>
+		<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+		<script src="js/hmt.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script src="js/swiper.min.js" type="text/javascript" ></script>
+		
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/Tpl/static/jquery.tmpl.js"></script>
+		<script type="text/javascript" src="js/abot.js"></script>
+		<script type="text/javascript" src="http://yanyubao.tseo.cn/api/shopapp.js"></script>
+		<script type="text/javascript" src="js/abot.function.js"></script>
+		
+	</head>
+	<body>
+	<!--header star-->
+		<header class="hasManyCity hasManyCitytwo" id="header">
+			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<div class="header-tit">
+				银行卡提现账号
+			</div>
+			<a href="setup.html" class="fr shoucang sousuo"><i class="iconfont icon-shezhi"></i></a>
+			<a href="#" class="fr shoucang sousuo"><i class="iconfont icon-kefu1"></i></a>			
+		</header>
+	    <!--header end-->
+	
+		<!--main start-->
+	<div class="main" style="width: 100%;margin-top:100px">
+				
+       <div class="list" style="width: 94%;margin:20px auto;">
+            <label class="item item-input">
+                <span class="input-label" aria-label="银行卡号：" id="_label-2" style="font-size:15px;color: #999;">银行卡号</span>
+                <input placeholder="银行卡号" style="width:60%;height:30px;" type="tel" id="bank">
+            </label>
+            <label class="item item-input" style="margin-top:20px;">
+                <span class="input-label" aria-label="开户姓名：" id="_label-3" style="font-size:15px;color: #999;">开户姓名</span>
+                <input placeholder="开户人姓名" id="bank_name" style="width:60%;height:30px;" class="ng-pristine ng-untouched ng-valid ng-empty" type="text">
+            </label>
+            <label class="item item-input" style="margin-top:20px;">
+              <span class="input-label" aria-label="开户银行：" id="_label-4" style="font-size:15px;color: #999;">开户银行</span>
+              <input placeholder="开户银行（如：中国工商银行）" id="bank_company" style="width:60%;height:30px;" class="ng-pristine ng-untouched ng-valid ng-empty" type="text">
+            </label>
+            <label class="item item-input" style="margin-top:20px;">
+                <span class="input-label" aria-label="开户支行：" id="_label-5" style="font-size:15px;color: #999;">开户支行</span>
+                <input placeholder="开户支行（如：南京东路支行）" id="bank_branch" style="width:60%;height:30px;" class="ng-pristine ng-untouched ng-valid ng-empty" type="text">
+            </label>
+           
+            <p style="margin:10px 0 0 0;color: #f00;">请在上方设置银行转账提现账号，请仔细核对您的账户后填写，一但提交后不可更改！</p>
+      </div>
+      <div class="padding">
+        <button id="btn" ng-click="bank_info()" style="border-radius:3px;width:80%;height:40px;line-height:31px;margin:0 5%;background-color: #06c1ae;">提交</button>
+      </div>
+     
+			
+			</div>
+		<!--main end-->
+	
+	</body>
+	
+	<script>
+	
+	function zhifubao_list_callback(res){
+		if(res.code ==1){
+			alert(res.msg)
+		}else{
+			alert(res.msg)
+			return;
+		}
+		
+		
+	}
+		
+		
+
+	function tijiao(){
+		
+		var bank = $("#bank").val();
+
+		var bank_name = $("#bank_name").val();
+		
+		var bank_company = $("#bank_company").val();
+		
+		var bank_branch = $("#bank_branch").val();
+		
+		
+		var loginItem = get_login_info();//获取登录信息 
+
+		var userid = loginItem.userid;
+		
+		var checkstr = loginItem.checkstr;
+		
+		var function_name = "wanshan_bankinfo";
+		
+		var request_data = {'userid':userid,'checkstr':checkstr,'bank_account':bank,'bank_name':bank_name,'bank_company':bank_company,'bank_branch':bank_branch,'action':'ajax'};
+		
+			ajax_request_server(function_name,request_data, zhifubao_list_callback);
+			
+		};
+		
+		 
+		
+		
+
+	
+	</script>
+	</html>

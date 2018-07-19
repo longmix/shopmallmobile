@@ -11,7 +11,11 @@
 		<meta name="format-detection" content="address=no">
 		<link rel="stylesheet" type="text/css" href="css/common.css">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
-		<link rel="stylesheet" type="text/css" href="css/ionic.css">
+		<link rel="stylesheet" type="text/css" href="css/ionic.css"> 
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"> 
+		
+		
+		
 		<link rel="stylesheet" href="css/reset.css">
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 
@@ -24,12 +28,18 @@
 	<body>
 		<!--header star-->
 		<header class="hasManyCity hasManyCitytwo" id="header">
-			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<a href="javascript:history.go(-1)" class="fl fanhui">
+			<!-- <i class="iconfont icon-fanhui"></i> -->
+			</a>
 			<div class="header-tit">
 				登录中心
 			</div>
-			<a href="setup.html" class="fr shoucang sousuo"><i class="iconfont icon-shezhi"></i></a>
-			<a href="#" class="fr shoucang sousuo"><i class="iconfont icon-kefu1"></i></a>			
+			<a href="setup.html" class="fr shoucang sousuo">
+			<!-- <i class="iconfont icon-shezhi"></i> -->
+			</a>
+			<a href="#" class="fr shoucang sousuo">
+			<!-- <i class="iconfont icon-kefu1"></i> -->
+			</a>			
 		</header>
 	    <!--header end-->
 	
@@ -46,29 +56,30 @@
          <div class="login_box">
          <div class="login_li">
             <div class="input_account_icon">
-              <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:3px;">&#xe60d;</i>
+            
+              <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:36px;">&#xe60d;</i>
             </div>
-            <input type="tel" placeholder="请输入账号或者手机号" class="input_account" required name="mobile" id="mobile" />
+            <input type="tel" placeholder="请输入账号或者手机号" style="margin-left:33px;padding-left:10px;" class="input_account"  name="mobile" id="mobile" />
             <div style="clear: both;"></div>
          </div>
           <div class="login_li">
-             <div class="input_account_icon">
-             <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:3px;">&#xe687;</i>
+             <div class="input_account_icon" style="width:30px;height:30px;">
+             <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:34px;">&#xe687;</i>
             </div>
            
-            <input type="text" placeholder="图形验证码" name="verifycode" id="verifycode"  class="input_yzm"/>
+            <input type="text" placeholder="图形验证码" style="margin-left:33px;padding-left:10px;" name="verifycode" id="verifycode" class="input_yzm"/>
                <div class="input_verify" >
                <img src="" onClick="this.src='./shopapp_api.php?g=Yanyubao&m=Shang&a=getverifycodeimg&tokenstr=tokenstr?' + new Date().getTime();" class="verify_img" id="refresh2">
               </div>
-             <div style="clear: both;"></div>
+            <div style="clear: both;"></div> 
          </div>
 
 
           <div class="login_li">
-             <div class="input_account_icon">
-             <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:3px;">&#xe687;</i>
+             <div class="input_account_icon" style="width:30px;height:30px;">
+             <i class="Hui-iconfont" style="font-size:20px;color: #999;position: relative;top:23px;">&#xe63f;</i>
             </div>
-            <input type="password" placeholder="密码"  class="input_yzm" id="password"/>
+            <input type="password" placeholder="密码" style="margin-left:33px;padding-left:10px;" class="input_yzm" id="password"/>
              <div style="clear: both;"></div>
          </div>
 
@@ -101,47 +112,85 @@
 var tokenstr = ''; 	
 
 function login_get_tokenstr_callback(res){
-	if(res.code != 1){
-		alert('连接服务器失败！');
-		return;
-	}
-	tokenstr = res.tokenstr;
-	var url_img = http_server+'?g=Yanyubao&m=Shang&a=getverifycodeimg&tokenstr='+tokenstr;
-	$('#refresh2').attr('src', url_img);
 	
+	if(res.code != 1){
+		
+		alert('连接服务器失败！');
+		
+		return;
+		
+	}
+	
+	tokenstr = res.tokenstr;
+	
+	var url_img = http_server+'?g=Yanyubao&m=Shang&a=getverifycodeimg&tokenstr='+tokenstr;
+	
+	$('#refresh2').attr('src', url_img);
+
+}
+
+function login_list_callback(res){
+	
+	var pic = res.data.icon;
+	
+	$(".login_logo").attr('src',pic);
 	
 }
+
 function login_send_sms_callback(res){
+	
 	if(res.code != 1){
+		
 		alert(res.msg);
+		
 		return;
+		
 	}
+	
 	alert(res.msg);
 }
+
 function login_by_password_callback(res){
 	
 	console.log(111111111)
+	
 	console.log(res)
-	 /* if(res.code !=1){
+
+    if(res.code !=1){
+    	
 		alert(res.msg);
+		
 		return;
 	}
 	var userid=res.userid;
+	
 	var checkstr=res.checkstr;
+	
 	set_login_info(userid, checkstr);//本地保存用户信息
-	self.location.href = 'center.html';  */
+	
+	self.location.href = 'center.html';
+
 }
 
 $(function(){
 	login_get_tokenstr(login_get_tokenstr_callback);
 	
+	var login_function_name = 'get_shop_info';
+	
 	$("#btn_login_by_sms_code").click(function(){
+		
 		var mobile = $("#mobile").val();//账号
+		//alert(mobile)
 		var password = $("#password").val();//密码
+		//alert(password)
 		var verifycode=$("#verifycode").val();//图片验证码
+		//alert(verifycode)
+		
 		login_by_password(mobile, password, verifycode, tokenstr, login_by_password_callback)
 		
 	});
+	
+	ajax_request_server(login_function_name,tokenstr, login_list_callback);
 	
 });
 	</script>

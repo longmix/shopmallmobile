@@ -47,7 +47,26 @@
 						</li>
 						<li class="clearfloat">
 							<a href="#">
-								<p class="fl">所在地区</p>
+								<p class="fl">所在省份</p>
+								<!--  <select name="" id="address-add">
+									
+
+									<option value="${region_id}">${region_name}</option>
+
+									
+								</select>  -->
+								<i class="fr iconfont icon-jiantou1"></i>
+							</a>
+						</li>
+						<li class="clearfloat">
+							<a href="#">
+								<p class="fl">所在城市</p>
+								<i class="fr iconfont icon-jiantou1"></i>
+							</a>
+						</li>
+						<li class="clearfloat">
+							<a href="#">
+								<p class="fl">所在区县</p>
 								<i class="fr iconfont icon-jiantou1"></i>
 							</a>
 						</li>
@@ -69,8 +88,12 @@
 	</body>
 	<!--默认按钮-->
 	<script type="text/javascript">
+	function city_address_callback(res){
+		$("#order_product").tmpl(res.data).appendTo('#address-add');
+	}
 	
-function add_address_callback(res){
+	
+ function add_address_callback(res){
 	if(res){
 		alert(res.msg);
 	}else{
@@ -89,13 +112,20 @@ $("#save_address").click(function(){
 		$(toggle).toggleClass('toggle--on').toggleClass('toggle--off').addClass('toggle--moving');
 	
 		setTimeout(function(){
+			
 			$(toggle).removeClass('toggle--moving');
+			
 		}, 200)
 		
 	});
-	//添加收货地址
+	
 	$(function(){
-		var function_name = "region_get";
+		//省市县三级调用
+		var city_address_name = "region_get";
+		var region_id = '1';
+		
+		//添加收货地址
+		var function_name = "address_save";
 		
 		var loginItem = get_login_info();//获取登录信息 
 		
@@ -113,6 +143,7 @@ $("#save_address").click(function(){
 			
 		ajax_request_server(function_name, request_data, add_address_callback)
 		
+		ajax_request_server(city_address_name, region_id, city_address_callback)
 	})
 	</script>
 </html>

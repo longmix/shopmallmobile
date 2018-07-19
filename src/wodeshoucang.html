@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>积分管理</title>
+		<title>我的收藏</title>
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-touch-fullscreen" content="yes">
@@ -32,7 +32,7 @@
 		<header class="hasManyCity hasManyCitytwo" id="header">
 			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
 			<div class="header-tit">
-				积分管理
+				我的收藏
 			</div>		
 		</header>
 	    <!--header end-->
@@ -40,23 +40,9 @@
 			<div id="main">
 			    <div class="warp warpthree clearfloat">
 			    	<div class="account clearfloat">
-			    		<div class="top clearfloat">
-			    			<ul>
-			    				<li class="box-s">操作时间</li>
-			    				<li>进出账</li>
-			    				<li>积分</li>
-			    			</ul>
-			    		</div>
+			    		
 			    		<div class="list clearfloat box-s">
-			    			 <script id="price_item" type="text/x-jquery-tmpl"> 
-			    			<div class="shang clearfloat">
-			    				<ul>
-				    				<li class="box-s">2016-07-23</li>
-				    				<li>收入</li>
-				    				<li>+300</li>
-				    			</ul>
-			    			</div>
-							 </script>
+			    		
 			    			<!-- <div class="bottom clearfloat">
 			    				<span class="fl">2016-07-10 13:29:47</span>
 			    				<p class="fr">剩余积分：7400</p>
@@ -81,13 +67,10 @@
 	
 	function price_list_callback(res){
 		
-		if(res.code == 1){
-			$("#price_item").tmpl(res.data).appendTo("#main");
-		}else{
+		if(res.code !=1){
 			alert(res.msg)
 		}
-		
-		
+			
 	}
 	
 		$(function(){
@@ -99,7 +82,7 @@
 			
 			var checkstr = loginItem.checkstr;
 			
-			var function_name = "user_score_log";
+			var function_name = "collection_products";
 			
 			var request_data = {'userid':userid,'checkstr':checkstr};
 			

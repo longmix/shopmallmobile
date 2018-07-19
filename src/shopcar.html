@@ -30,13 +30,15 @@
 	<body>
 		<!--header star-->
 		<header class="hasManyCity hasManyCitytwo" id="header">
-			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<a href="index.html" class="fl fanhui">
+			<i class="iconfont">&#xe6d4;</i>
+			</a>
 			<div class="header-tit">
 				购物车
 			</div>	
 			
 			    <a href="#" class="fr shanchu">
-				<i class="iconfont icon-lajixiang fr"></i>
+				<!-- <i class="iconfont icon-lajixiang fr"></i> -->
 			</a> 
 		</header>
 	    <!--header end-->
@@ -68,11 +70,11 @@
 				    					<div class="zuo clearfloat fl">
 				    						<ul>
 				    							<li><img class="minus" src="img/jian.png"/></li>
-				    							<li class="count">${amount}</li>
+				    							<li class="count">1</li>
 				    							<li><img class="plus" src="img/jia.png"/></li>
 				    						</ul>
 				    					</div>
-				    					<i class="iconfont icon-lajixiang fr cart" onclick="del_cart(${productid})"></i>
+				    					<i class="iconfont fr cart" onclick="del_cart(${productid})">&#xe6e2;</i>
 				    				</div>
 				    			</div>
 			    			</a>
@@ -84,17 +86,16 @@
 			    </div>
 			</div>
 		</div>
-	    
-	    
-	    
-	    
+	
+	
+	
 	    
 	    <!--settlement star-->
 	    <div class="settlement clearfloat">
 	    	<div class="zuo clearfloat fl box-s">
-	    		合计：<span>￥</span>
+	    		合计：<span id="heji">￥0</span>
 	    	</div>
-	    	<a href="indiana-shu.html" class="fl db">
+	    	<a class="fl db" id="jiesuan">
 	    		立即结算
 	    	</a>
 	    </div>
@@ -115,7 +116,7 @@ var checkstr = loginItem.checkstr;
 	 
 	var function_cart_del_name = "cart_del";
 	
-	var request_cart_del_data = {'userid':userid, 'checkstr':checkstr ,'productid':productid };
+	var request_cart_del_data = {'userid':userid, 'checkstr':checkstr ,'productid':productid};
 	
 	ajax_request_server(function_cart_del_name,request_cart_del_data,cart_del_callback);
 	
@@ -137,6 +138,7 @@ function cart_del_callback(res){
 };
 
 
+
  function product_detail_callback(res){
 	
 	$("#cart_item").tmpl(res.data).appendTo("#cart_list");
@@ -145,35 +147,69 @@ function cart_del_callback(res){
 
 function cart_list_callback(res){
 	
-	//console.log(res);
 	var arr_cart = res.data;
 	
-	//console.log(arr_cart);//购物车里面的商品
+	console.log(arr_cart);//购物车里面的商品
+	
+	 var count = "";
+	
+	var zongprice = 0;
+	
+	var pro_arr = new Array() ;
 	
 	 for(var i = 0;i < arr_cart.length;i++){
 		 
-		 productid = arr_cart[i]['productid'];//商品id 要根据商品id去查商品详情
-		 console.log(productid);
+		 productid = arr_cart[i]['productid'];//商品id 
+		 
+		 pro_arr[i] =productid
+		 
+		 console.log(pro_arr);
+		 
 		 amount = arr_cart[i]['amount'];//购买的数量
 			
 			var function_name = "product_detail";
 			
 			var request_data = {'userid':userid, 'checkstr':checkstr,'productid':productid };
 			
-			 $(".count").val(amount);
+					var a = arr_cart[i]['price'];
+					
+		 			zongprice += parseInt(a);
 			
+			 
 			ajax_request_server(function_name, request_data, product_detail_callback);//商品详情
-			
+				
 	}
+	 
+	$("#heji").text("￥"+zongprice);
+	 
+	sessionStorage["zong"] = zongprice;
 	
-	 $(".count").val(amount);
+	
+	 var num = " ";
+	  for(var i = 0;count.length;i++){
+		 
+		 num += count[i]
+		 
+		$(".count").val(num);
+		 
+	 } 
+	 $("#jiesuan").click(function(){
+		 
+		 sessionStorage["product_id"] = pro_arr;//存储productid的数组
+		
+		 //console.log(pro_arr);
+		 
+		 window.location.href="indiana-shu.html";
+	 })
+	 
+	
 	
 };
 
 $(function(){
 	
 	if(!is_user_login()){
-	    location.href = 'login.html';
+		window.location.href = 'login.html';
 		return;
 		
 	};
@@ -203,3 +239,5 @@ $(function(){
 </html>
 
 
+	    
+	    

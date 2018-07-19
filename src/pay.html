@@ -30,7 +30,8 @@
 	</head>
 	<body>
 		<header class="hasManyCity hasManyCitytwo hasManyCitythree" id="header">
-			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<a href="javascript:history.go(-1)" class="fl fanhui">
+			<i class="iconfont">&#xe6d4;</i></a>
 			<div class="header-tit">
 				支付订单
 			</div>			
@@ -43,74 +44,210 @@
 						<img src="img/tou.png" alt="商家头像">
 					</div>
 					<div class="in-order-desc">
+						<div>
+							<span>订单编号：<span id="dingdanbianhao"></span></span>
+						</div>
 						<div class="cell-ellipsis">
-							<span class="in-order-fee in-bottom-line">¥8.80</span>
+							<span>总计：<span class="in-order-fee in-bottom-line" id="zongjia2">¥0.00</span></span>
 						</div>
 						<h4 class="cell-ellipsis">
-							<span class="in-order-title in-bottom-line">爆米花32盎司1次</span>
+							<span class="in-order-title in-bottom-line" id="dingdanbian"></span>
 						</h4>
 					</div>
 				</div>
-				<div class="in-pay-method cell-box">
+				<div>
+				
+				<div class="in-pay-method cell-box" id="zhifufangshi">
+				</div>
+				
+				  <script id="fangshi" type="text/x-jquery-tmpl">
+
 					<div class="in-pay-type cell-access">
 						<div class="cell-icon">
-							<img src="img/unionpaynew.png" alt="银行卡支付">
+							 <img src="${payment_icon}" alt="银行卡支付">
 						</div>
 						<div class="cell-left">
-							<div class="in-pay-title cell-ellipsis">银行卡支付 </div>
+							<div class="in-pay-title cell-ellipsis">${payment_name} </div>
 							<div class="in-pay-info cell-ellipsis">
 								<span class="in-amount-info">安全极速支付，无需开通网银</span>
 							</div>
 						</div>
-						<div class="checkbox">
-							<input type="radio" name="pay-method" checked="" data-index="0">
-							<span class="checkbox-icon-round"></span>
-						</div>
 					</div>
-					<div class="in-pay-type cell-access">
-						<div class="cell-icon">
-							<img src="img/weixin2-2.png" alt="微信支付">
-						</div>
+ 				</script> 
+ 				<ul id='fenlei' style="display:none;">
+ 				<script id="zf" type="text/x-jquery-tmpl">
+ 					<li onclick="shownav(this)">
+ 						<div class="in-pay-type cell-access">
 						<div class="cell-left">
-							<div class="in-pay-title cell-ellipsis">微信支付 </div>
+							<div class="in-pay-title cell-ellipsis">${pay_name}</div>
 							<div class="in-pay-info cell-ellipsis">
-								<span class="in-amount-info">推荐安装微信6.0.2及以上版本</span>
+								<span class="in-amount-info">安全极速支付，无需开通网银</span>
 							</div>
 						</div>
-						<div class="checkbox">
-							<input type="radio" name="pay-method" data-index="1">
-							<span class="checkbox-icon-round"></span>
-						</div>
 					</div>
-					<div class="in-pay-type cell-access">
-						<div class="cell-icon">
-							<img src="img/alipay2-2.png" alt="支付宝支付">
-						</div>
-						<div class="cell-left">
-							<div class="in-pay-title cell-ellipsis">支付宝支付 </div>
-							<div class="in-pay-info cell-ellipsis">
-								<span class="in-amount-info">推荐有支付宝账户的用户使用</span>
-							</div>
-						</div>
-						<div class="checkbox">
-							<input type="radio" name="pay-method" data-index="2">
-							<span class="checkbox-icon-round"></span>
-						</div>
+ 					</li>
+				</script>
+ 				</ul>
+ 				<div id="showbox" style="width:100%;">
+ 					<div class="show1" style="display:none;">
+ 						
+						
+						<li>收款姓名：<p class="ng-binding">住址</p></li>
+						<li>收款银行：<p class="ng-binding">工行</p></li>
+						<li>收款账号：<p class="ng-binding">123456</p></li>
+						<li><p>转账后请填写以下信息以便与财务对账</p></li>
+						
+						<li>汇款姓名：<input placeholder="汇款人" required type="text"></li>
+						<li>汇款方式：<input placeholder="如中行转账" required="" type="text"></li>
+						<li>汇款时间：<input id="pay_order_time" required="" placeholder="请选择汇款时间" type="date" value="" min="" style="text-align: left;" ></li>
+						<li>汇款金额：<input class="jine" disabled="disabled" value="0.00" type="text"></li>
+							
+ 					</div>
+ 					<div class="show2" style="display:none;">
+ 						<li>收款姓名：<p class="ng-binding">住址</p></li>
+						<li>收款银行：<p class="ng-binding">农行</p></li>
+						<li>收款账号：<p class="ng-binding">123456</p></li>
+						<li><p>转账后请填写以下信息以便与财务对账</p></li>
+						
+						<li>汇款姓名：<input placeholder="汇款人"  required="" type="text"></li>
+						<li>汇款方式：<input placeholder="如中行转账" required="" type="text"></li>
+						<li>汇款时间：<input id="pay_order_time" required="" placeholder="请选择汇款时间" type="date" style="text-align: left;" ></li>
+						<li>汇款金额：<input class="jine" disabled="disabled" value="0.00" type="text"></li>
+ 					</div>
+ 					<div class="show3" style="display:none;">
+ 						
+						<li style="width:100%;text-align: center;"><img src="http://img60.ddimg.cn/upload_img/00087/geq/750x3154_0625-1529917264.jpg" style="width:90%;"></li>
+						<li><p>转账后请填写以下信息以便与财务对账</p></li>
+						<li>汇款姓名：<input placeholder="汇款人" required="" ng-model="input.pay_order_name" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" type="text"></li>
+						<li>汇款方式：<input ng-model="input.huikuan_pingtai" placeholder="如微信转账、支付宝转账" required="" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" type="text"></li>	
+						<li>汇款时间：<input ng-model="input.pay_order_time" required="" id="pay_order_time" placeholder="请选择汇款时间" value="" min="" style="text-align: left;" class="ng-pristine ng-untouched ng-empty ng-valid-min ng-invalid ng-invalid-required" type="datetime-local"></li>
+						<li>汇款金额：<input class="jine" disabled="disabled" value="0.00" type="text"></li>
+						
+					
+ 					</div>
+ 					<div class="show4" style="display:none;">
+ 						
+						<li style="width:100%;text-align: center;"><img src="http://www.liantu.com/images/2013/weixin.png" style="width:90%;"></li>
+						<li><p>转账后请填写以下信息以便与财务对账</p></li>
+						<li>汇款姓名：<input placeholder="汇款人" required="" ng-model="input.pay_order_name" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" type="text"></li>
+						<li>汇款方式：<input ng-model="input.huikuan_pingtai" placeholder="如微信转账、支付宝转账" required="" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" type="text"></li>	
+						<li>汇款时间：<input ng-model="input.pay_order_time" required="" id="pay_order_time" placeholder="请选择汇款时间" value="" min="" style="text-align: left;" class="ng-pristine ng-untouched ng-empty ng-valid-min ng-invalid ng-invalid-required" type="datetime-local"></li>
+						<li>汇款金额：<input class="jine" disabled="disabled" value="0.00" type="text"></li>
+						
+					
+ 					</div>
+ 				</div>
 					</div>
-					<div class="in-show-more cell-access" style="display: block;">
+					<!-- <div class="in-show-more cell-access" style="display: block;">
 						<span>查看更多支付方式</span>
-					</div>
+					</div> -->
 				</div>
 				<div class="btn-line">
-					<button class="btn btn-submit">
+					<button class="btn btn-submit" id="queren">
 						<span class="in-confirm">确认支付</span>
-						<span class="in-need-pay">¥8.80</span>
+						<span class="in-need-pay" id="zongjia">¥0.00</span>
 					</button>
 				</div>
 			</div>
 		</div>
 	</body>
-	<script src="js/index.min.14hpKd.js"></script>
+	 <script src="js/index.min.14hpKd.js"></script >
 	<script>
+	function shownav(e){
+		
+	 	 var aa = $(e).index()-1;
+	 	 
+		$("#showbox>div").eq(aa).show().siblings().hide(); 
+	} 
+	
+	
+	function cart_order_callback(res){
+		//console.log(111)
+		//console.log(res)
+		var bianhao = res.orderno;
+		
+		var orderid = res.orderid;
+		
+		$("#dingdanbianhao").attr('orderid',orderid);
+	
+		$("#dingdanbianhao").text(bianhao);
+	}
+	function cart_zhifu_callback(res){
+		//console.log(2222222222)
+		//console.log(res.data)
+		$('#fangshi').tmpl(res.data).appendTo('#zhifufangshi');
+	}
+	$("#zhifufangshi").click(function(){
+		
+		$("#fenlei").slideToggle("slow");
+	})
+	
+	function order_zhuanzhang_callback(res){//支付  
+		
+		$('#zf').tmpl(res.data).appendTo('#fenlei');
+
+	}
+	
+	function order_queren_callback(res){//订单确认
+		if(res.code == 1){
+			alert(res.msg)
+			location.href = 'order.html';
+		}
+	}
+	
+		$(function(){
+			var loginItem = get_login_info();//获取登录信息 
+
+			var userid = loginItem.userid;
+	
+			var checkstr = loginItem.checkstr;
+		
+	 		 //支付方式
+			var function_zhifu_name = "payment_type_list";
+	 		 
+	 		 var function_order_add_name = "order_add";
+	 		 
+	 		zong = sessionStorage["zongprice"];
+	 		
+	 		$("#zongjia").text(zong);
+	 		
+	 		$("#zongjia2").text(zong);
+	 		
+	 		$(".jine").val(zong);
+	 		
+	 		
+	 		
+	 		traffic = sessionStorage["traffic_price"];
+	 		
+	 		$("#queren").click(function(){
+	 			
+	 			var order_queren = "order_buy";
+	 			
+	 			var ordersid = $("#dingdanbianhao").attr('orderid')
+	 			
+	 			var order_queren_data = {'userid':userid, 'checkstr':checkstr,'all_price':zong,'orderid':ordersid,'payment_type':6,'yue_amount':'ture','zengkuan_amount':'0.00','offlinepayid':'24','body':"商城支付订单",'subject':'商城支付订单'};
+	 			
+	 			 ajax_request_server(order_queren,order_queren_data, order_queren_callback);
+	 			
+	 		})
+	 		 
+	 		 var function_order_add_data = {'userid':userid, 'checkstr':checkstr,'all_price':zong,'traffic_price':traffic};
+		
+			var request_zhifu_data = {'userid':userid, 'checkstr':checkstr };
+			
+			var function_zhuanzhang_name = 'offlinepay_get';
+			
+			var function_zhuanzhang_data = {'userid':userid, 'checkstr':checkstr };
+			
+			  ajax_request_server(function_zhifu_name,request_zhifu_data, cart_zhifu_callback);
+			  
+			  ajax_request_server(function_order_add_name,function_order_add_data, cart_order_callback);
+			  
+			  ajax_request_server(function_zhuanzhang_name,function_zhuanzhang_data, order_zhuanzhang_callback);
+			  
+			 
+
+		})	
+		
 	</script>
 </html>

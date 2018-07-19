@@ -28,7 +28,8 @@
 	</head>
 	<body>
 		<header class="hasManyCity hasManyCitytwo" id="header">
-			<a href="javascript:history.go(-1)" class="fl fanhui"><i class="iconfont icon-fanhui"></i></a>
+			<a href="javascript:history.go(-1)" class="fl fanhui">
+			<i class="iconfont">&#xe6d4;</i></a>
 			<div class="header-tit">
 				管理收货地址
 			</div>
@@ -56,7 +57,7 @@
 				    				<div class="radio" > 
 									    <label>
 									        <input type="checkbox" name="sex" value="" />
-									        <div class="option"></div>
+									        <div class="option" onclick="moren(${addressid})"></div>
 									    </label>
 									</div>
 				    			</div>
@@ -102,7 +103,23 @@
 		 }	
 	
 	}
-	
+	function get_moren_callback(res){
+		alert(res.msg)
+		window.location.href = "indiana-shu.html";
+	}
+	function moren(addressid){
+		var loginItem = get_login_info();//获取登录信息 
+		
+		var userid = get_login_info().userid;
+		
+		var checkstr = get_login_info().checkstr;
+		
+		var moren_function_name = "address_save";
+		
+		var moren_data = {'userid':userid, 'checkstr':checkstr, 'action':'edit','moren':1,'addressid':addressid};
+		
+		ajax_request_server(moren_function_name, moren_data, get_moren_callback);
+	}
 	
 	function del_address(addressid){
 		
