@@ -48,7 +48,9 @@ var sellerid = 'pQNNmSkaq';
 
 ## 小程序商城
 
-小程序商城预计八月份发布，详情关注[http://www.abot.cn/source-code](http://www.abot.cn/source-code)
+小程序商城已经发布，下载最新版本请到这里：[https://github.com/longmix/shopmallminiprogram](https://github.com/longmix/shopmallminiprogram)
+
+APP商城源代码的最新动态，详到这里查询 [http://www.abot.cn/source-code](http://www.abot.cn/source-code)
 
 
 ## 商城系统预览图
